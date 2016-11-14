@@ -51,6 +51,10 @@ h2.section-header {
     padding-top: 50px;
     text-align: center;
     padding-bottom: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }          
 .footer-text {
     color: #F8F8F8;
