@@ -12,7 +12,7 @@ class StudentAccount extends Controller
         if (isset($_SESSION['loggedInStudent_id'])) {
 
             $student = $this->model->getStudentInfo($student_id);
-            $studentbookings = $this->model->getStudentBookings($student_id);
+            //$studentbookings = $this->model->getStudentBookings($student_id);
         }
             require APP . 'view/_templates/header.php';
             require APP . 'view/student/account.php';

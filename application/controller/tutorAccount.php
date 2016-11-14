@@ -12,7 +12,7 @@ class TutorAccount extends Controller
         if (isset($_SESSION['loggedInTutor_id'])) {
 
             $tutor = $this->model->getTutorInfo($tutor_id);
-            $tutorbookings = $this->model->getTutorBookings($tutor_id);
+            //$tutorbookings = $this->model->getTutorBookings($tutor_id);
         }
             require APP . 'view/_templates/header.php';
             require APP . 'view/tutor/account.php';
