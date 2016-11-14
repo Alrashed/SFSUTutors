@@ -151,7 +151,7 @@ class Model
             ":photo" => $photo,
             ":transcript" => $transcript,
         ];
-        $ this->dao->update($parameters, "editTutor");
+        $this->dao->update($parameters, "editTutor");
     }
     
     public function deleteTutor($tutor_id)
