@@ -2,8 +2,7 @@
 <div id="homehead" class="home container-fluid static-page">
     
     <style type="text/css">
-        homehead
-        {
+        #homehead {
             background-image:url('<?php echo URL . '/img/Library.jpg' ?>') no-repeat center bottom;
         }
     </style>
