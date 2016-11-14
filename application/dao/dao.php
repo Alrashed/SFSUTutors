@@ -31,7 +31,33 @@ class Dao
     **********************/
     public function create($parameters, $target)
     {
+        if ($target == "student") {
+            $sql = "INSERT INTO student (firstName, lastName, email, password, birthdate, phone) VALUES (:firstname, :lastname, :email, :password, :birthdate, :phone)";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute($parameters)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
         
+        else if ($target == "tutor") {
+            $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major, gpa, about, available, offering, price) VALUES (:firstname, :lastname, :email, :password, :birthdate, :phone, :major, :gpa, :about, :available, :offering, :price)";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute($parameters)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
     
     
@@ -55,6 +81,21 @@ class Dao
                echo $e->getMessage();
            }
         }
+        
+        else if ($target == "studentInfo") {
+            $student_id = $parameters[":student_id"];
+            $sql = "SELECT firstName, lastName, email FROM student WHERE student_id = '".$student_id."' ";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute()) {
+                    return $query->fetchAll();
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
 
         else if ($target == "tutor") {
            $email = $parameters[":email"];
@@ -70,6 +111,21 @@ class Dao
            } catch (PDOException $e) {
                echo $e->getMessage();
            }
+        }
+        
+        else if ($target == "tutorInfo") {
+            $tutor_id = $parameters[":tutor_id"];
+            $sql = "SELECT firstName, LastName, email FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute()) {
+                    return $query->fetchAll();
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
     }
     
