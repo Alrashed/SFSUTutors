@@ -77,7 +77,7 @@ if (!isset($_SESSION)) {
 
             </ul>
             
-            <?php else if (isset($_SESSION['loggedInTutor_id'])) : ?>
+            <?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
 
             <ul class="nav navbar-nav navbar-right">
 
