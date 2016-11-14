@@ -1,90 +1,70 @@
-body {
-    font-family: Arial;
-    font-size: 14px;
+p {
+    font-size: 16px;
 }
-.logo {
-    font-size: 100px;
-    font-weight: bolder;
-    letter-spacing: -6px;
-    color: #222;
-    margin: 20px 30px;
+.margin {
+    margin-bottom: 45px;
 }
-.logo .number {
-    color: #222;
-    opacity: 0.1;
+
+/* demo css */
+.home {
+    background: url(Library.jpg) no-repeat center bottom;
+    background-size: cover;
+    text-align: center;
+    border-bottom: none;
+    min-height: 500px;
+    padding: 180px 0 0;
 }
-.navigation {
-    margin-left: 33px;
+.static-page {
+    padding-top: 30px;
 }
-.navigation a {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 14px;
+.home h1 {
+    color: #f0ffff;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 10);
+    padding: 100px 0 0;
+}
+.steps {
+    padding: 0 0 20px !important;
+    margin-bottom: 30px;
+    
+}
+.circle-icon {
+    width: 180px;
+    height: 180px;
+    line-height: 180px;
+    background-color: #fff;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto 50px;
+}
+h2.section-header {
+    background-color: #330033;
+    color: #FFF;
+    text-align: center;
+    margin: 0 0 60px;
+    padding: 20px 0;
+    max-width: 100%;
     text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-    background: #222;
-    color: #fff;
 }
-.navigation a:hover {
-    color: #222;
-    background: transparent;
+#footer {
+    background-color: #262F36;
+    padding-top: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+}          
+.footer-text {
+    color: #F8F8F8;
 }
-.container {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 33px;
+.container-f {
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
-.container a {
-    color: #222;
+.bg-1 {
+  background-color: #fff; /* Dark Blue #474e5d */
 }
-.container table {
-    font-size: 11px;
-    margin-top: 20px;
-}
-.container table thead td {
-    background-color: #f5f5f5;
-    padding: 4px 10px;
-}
-.container table tbody td {
-    padding: 4px 10px;
-}
-.container .box {
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    margin-top: 30px;
-}
-.container input {
-    background-color: #f5f5f5;
-    border: 0;
-    padding: 5px 10px;
-}
-.container input[type="submit"] {
-    background-color: #ccc;
-    cursor: pointer;
-}
-.container input[type="submit"]:hover {
-    background-color: #222;
-    color: #fff;
-}
-.container button {
-    background-color: #ccc;
-    border: 0;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-.container button:hover {
-    background-color: #222;
-    color: #fff;
-}
-.footer {
-    padding: 20px;
-    margin: 33px;
-    text-align: right;
-    font-size: 11px;
-    opacity: 0.5;
-}
-.footer a {
-    color: #454545;
+.bg-2 {
+  background-color: #330033; /* Green #1abc9c */ 
+  color: #ffffff;
 }
