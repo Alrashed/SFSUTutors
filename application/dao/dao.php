@@ -58,6 +58,37 @@ class Dao
                 echo $e->getMessage();
             }
         }
+        
+        else if ($target == "booking") {
+            $tutor_id = $parameters[":tutor_id"];
+            $student_id = $parameters[":student_id"];
+            $class = $parameters[":class"];
+            $time = $parameters[":time"];
+            $length = $parameters[":length"];
+            $cost = $parameters[":cost"];
+
+            $sql = "SELECT price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            //echo $sql;
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            $result = $query->fetch();
+            $price = $result->price;
+            $cost = $length * $price;
+            //echo $cost;
+
+            $sql1 ="INSERT INTO booking (tutor_id, student_id, class, time, length, cost) VALUES('".$tutor_id."', '".$student_id."', '".$class."','".$time."', '".$length."', '".$cost."')";
+
+            $query = $this->db->prepare($sql1);
+            try {
+                if ($query->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
     
     
@@ -144,6 +175,46 @@ class Dao
     **********************/
     public function delete ($parameters, $target)
     {
+        f($target == "student") {
+            $sql = "DELETE FROM student WHERE (student_id) = (:student_id)";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute($parameters)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
         
+        else if($target == "tutor") {
+            $sql = "DELETE FROM tutor WHERE (tutor_id) = (:tutor_id)";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute($parameters)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        else if($target == "booking") {
+            $sql = "DELETE FROM booking WHERE (booking_id) = (:booking_id)";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute($parameters)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
 }

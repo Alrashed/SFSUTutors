@@ -48,7 +48,25 @@ class Model
         ];
         return $this->dao->get($parameters, "studentInfo");
     }
+    
+    public function getStudentBooking($student_id)
+    {
+        $parameters = [
+            ":student_id" => $student_id,
+        ];
+        return $this->dao->get($parameters, "studentBookings");
+    }
+    
+    public function deleteStudent($student_id)
+    {
+        $parameters = [
+            ":student_id" => $student_id,
+        ];
+        $this->dao->delete($parameters, "student");
 
+    }
+
+    
     /****************************
     ** TUTOR SETTERS & GETTERS **
     ****************************/
@@ -61,7 +79,7 @@ class Model
         return $this->dao->get($parameters, "tutor");
     }
     
-    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering/*, $price, $photo, $transcript*/) 
+    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering, $price/*, $photo, $transcript*/) 
     {
         $parameters = [
             ":firstname" => $firstname,
@@ -90,5 +108,55 @@ class Model
             ":tutor_id" => $tutor_id,
         ];
         return $this->dao->get($parameters, "tutorInfo");
+    }
+    
+    public function getTutorBooking($tutor_id)
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+        ];
+        return $this->dao->get($parameters, "tutorBookings");
+    }
+    
+    public function deleteTutor($tutor_id)
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+        ];
+        $this->dao->delete($parameters, "tutor");
+
+    }
+    
+    
+    /******************************
+    ** BOOKING SETTERS & GETTERS **
+    ******************************/
+    public function createBooking($tutor_id, $student_id, $class, $time, $length, $cost) 
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+            ":student_id" => $student_id,
+            ":class" => $class,
+            ":time" => $time,
+            ":length" => $length,
+            ":cost" => $cost,
+        ];
+        $this->dao->create($parameters, "booking");
+    }
+    
+    public function deleteBooking($booking_id) 
+    {
+        $parameters = [
+            ":booking_id" => $booking_id,
+        ];
+        $this->dao->delete($parameters, "booking");
+    }
+    
+    public function getBooking($booking_id) 
+    {
+        $parameters = [
+            ":booking_id" => $booking_id,
+        ];
+        return $this->dao->get($parameters, "booking");
     }
 }
