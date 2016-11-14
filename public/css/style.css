@@ -7,7 +7,7 @@ p {
 
 /* demo css */
 .home {
-    background: url('../public/img/Library.jpg') no-repeat center bottom;
+    background-image: url(/var/www/html/sfsututors.com/public_html/SFSUTutors/public/img/Library.jpg) no-repeat center bottom;
     background-size: cover;
     text-align: center;
     border-bottom: none;
