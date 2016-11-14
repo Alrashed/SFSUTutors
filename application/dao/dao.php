@@ -25,4 +25,69 @@ class Dao
             echo $e->getMessage();
         }
     }
+    
+    /**********************
+    ** CREATE OPERATIONS **
+    **********************/
+    public function create($parameters, $target)
+    {
+        
+    }
+    
+    
+    /*******************
+    ** GET OPERATIONS **
+    *******************/
+    public function get($parameters, $target)
+    {
+        if ($target == "student") {
+           $email = $parameters[":email"];
+           $password = $parameters[":password"];
+           $sql = "SELECT student_id, email FROM student WHERE (email = '".$email."') AND (password = '".$password."')";
+           $query = $this->db->prepare($sql);
+           try {
+               if ($query->execute()) {
+                   return $query->fetch();
+               } else {
+                   return false;
+               }
+           } catch (PDOException $e) {
+               echo $e->getMessage();
+           }
+        }
+
+        else if ($target == "tutor") {
+           $email = $parameters[":email"];
+           $password = $parameters[":password"];
+           $sql = "SELECT tutor_id, email FROM tutor WHERE (email = '".$email."') AND (password = '".$password."')";
+           $query = $this->db->prepare($sql);
+           try {
+               if ($query->execute()) {
+                   return $query->fetch();
+               } else {
+                   return false;
+               }
+           } catch (PDOException $e) {
+               echo $e->getMessage();
+           }
+        }
+    }
+    
+    
+    /**********************
+    ** UPDATE OPERATIONS **
+    **********************/
+    public function update($parameters, $target)
+    {
+        
+    }
+    
+    
+    /**********************
+    ** DELETE OPERATIONS **
+    **********************/
+    public function delete ($parameters, $target)
+    {
+        
+    }
 }
