@@ -1,5 +1,5 @@
 <!--First Grid-->
-<div id="homehead" class="home container-fluid static-page" style="background-image: <?php echo URL . '/img/Library.jpg' ?> no-repeat center bottom;">
+<div id="homehead" class="home container-fluid static-page" style="background-image: url(<?php echo URL . '/img/Library.jpg' ?>) no-repeat center bottom;">
 
     <h1>TUTORING SERVICES MADE SIMPLE FOR SFSU STUDENTS!</h1>
 
@@ -20,7 +20,7 @@
 
             <div class="col-sm-4 text-center">
 
-                <img src="<?php echo URL . '/img/account.png' ?>" class="circle-icon">
+                <img src="<?php echo URL . '/img/browse.png' ?>" class="circle-icon">
 
                 <h3>Step 1</h3>
 

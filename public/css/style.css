@@ -7,6 +7,7 @@ p {
 
 /* demo css */
 .home {
+    background-image: no-repeat center bottom;
     background-size: cover;
     text-align: center;
     border-bottom: none;
