@@ -52,7 +52,7 @@
 
                         <div class=""> 
 
-                            <input type="password" class="form-control input-lg placeholder password_field" name= "password" placeholder="Enter password">
+                            <input type="password" class="form-control input-lg placeholder password_field" name="password" placeholder="Enter password">
 
                         </div>
 
@@ -76,7 +76,7 @@
 
                         <div class=""> 
 
-                            <input type="text" class="form-control input-lg placeholder" name= "phone" placeholder="Enter your phone No." maxlength="10">
+                            <input type="text" class="form-control input-lg placeholder" name="phone" placeholder="Enter your phone No." maxlength="10">
 
                         </div>
 
@@ -106,7 +106,7 @@
 
                         <div class="col-lg-4 col-lg-offset-4">
 
-                            <button type="submit" class="btn btn-success submit" style="margin-right:20%; margin-top:20%; margin-bottom:0%;" name= "submit" value='submit'>Sign Up</button>
+                            <button type="submit" class="btn btn-success submit" style="margin-right:20%; margin-top:20%; margin-bottom:0%;" name="submit" value='submit'>Sign Up</button>
 
                         </div>
 

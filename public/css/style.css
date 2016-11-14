@@ -7,7 +7,7 @@ p {
 
 /* demo css */
 .home {
-    background: url(Library.jpg) no-repeat center bottom;
+    background: url(/public/img/Library.jpg) no-repeat center bottom;
     background-size: cover;
     text-align: center;
     border-bottom: none;
@@ -90,21 +90,21 @@ body {
 }
 .email_field {
     background-size: 30px 32px;
-    background-image: url('mail.png');
+    background-image: url('/public/img/mail.png');
     background-position: 6px 6px; 
     background-repeat: no-repeat;
     padding-left: 40px;
 }
 .username_field {
     background-size: 30px 32px;
-    background-image: url('account.png');
+    background-image: url('/public/img/account.png');
     background-position: 6px 6px; 
     background-repeat: no-repeat;
     padding-left: 40px;
 }
 .password_field {
     background-size: 30px 32px;
-    background-image: url('lock.png');
+    background-image: url('/public/img/lock.png');
     background-position: 6px 6px; 
     background-repeat: no-repeat;
     padding-left: 40px;

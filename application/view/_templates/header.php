@@ -71,7 +71,7 @@ if (!isset($_SESSION)) {
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="<?php echo URL; ?>studentAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['Email']); ?></a></li>
+                <li><a href="<?php echo URL; ?>studentAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['email']); ?></a></li>
 
                 <li><a href="<?php echo URL; ?>logout/destroySession"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 
@@ -81,7 +81,7 @@ if (!isset($_SESSION)) {
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="<?php echo URL; ?>tutorAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['Email']); ?></a></li>
+                <li><a href="<?php echo URL; ?>tutorAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['email']); ?></a></li>
 
                 <li><a href="<?php echo URL; ?>logout/destroySession"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 

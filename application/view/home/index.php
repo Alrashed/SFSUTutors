@@ -20,7 +20,7 @@
 
             <div class="col-sm-4 text-center">
 
-                <img src="browse.png" class="circle-icon">
+                <img src="/public/img/browse.png" class="circle-icon">
 
                 <h3>Step 1</h3>
 
@@ -30,7 +30,7 @@
 
             <div class="col-sm-4 text-center">
 
-                <img src="register.png" class="circle-icon">
+                <img src="/public/img/register.png" class="circle-icon">
 
                 <h3>Step 2</h3>
 
@@ -40,7 +40,7 @@
 
             <div class="col-sm-4 text-center">
 
-                <img src="thumbs-up.png" class="circle-icon">
+                <img src="/public/img/thumbs-up.png" class="circle-icon">
 
                 <h3>Step 3</h3>
 
