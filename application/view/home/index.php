@@ -1,5 +1,5 @@
 <!--First Grid-->
-<div id="homehead" class="home container-fluid static-page">
+<div id="homehead" class="home container-fluid static-page library">
     
     <h1>TUTORING SERVICES MADE SIMPLE FOR SFSU STUDENTS!</h1>
 
