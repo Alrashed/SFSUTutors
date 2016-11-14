@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+$library = URL . '/img/Library.jpg';
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@ if (!isset($_SESSION)) {
     
     <style type="text/css">
         .library {
-            background-image:url('<?php echo URL . '/img/Library.jpg' ?>') no-repeat center bottom;
+            background-image:url('<?php echo $library ?>') no-repeat center bottom;
             background-size: cover;
         }
     </style>
