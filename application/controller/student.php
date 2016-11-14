@@ -18,4 +18,14 @@ class Student extends Controller
         
         header('location: ' . URL . 'login/index');
     }
+    
+    public function deleteStudent($student_id)
+    {
+        if (isset($student_id)) {
+            
+            $this->model->deleteStudent($student_id);
+        }
+
+        header('location: ' . URL . 'home/index');
+    }
 }

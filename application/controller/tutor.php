@@ -18,4 +18,14 @@ class Tutor extends Controller
         
         header('location: ' . URL . 'login/index');
     }
+    
+    public function deleteTutor($tutor_id)
+    {
+        if (isset($tutor_id)) {
+            
+            $this->model->deleteTutor($tutor_id);
+        }
+
+        header('location: ' . URL . 'home/index');
+    }
 }

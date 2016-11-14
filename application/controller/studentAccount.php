@@ -18,4 +18,14 @@ class StudentAccount extends Controller
             require APP . 'view/student/account.php';
             require APP . 'view/_templates/footer.php';
     }
+    
+    public function deleteBooking($booking_id)
+    {
+        if (isset($booking_id)) {
+            
+            $this->model->deleteBooking($booking_id);
+        }
+        
+            header('location: ' . URL . 'student/account');
+    }
 }
