@@ -1,6 +1,13 @@
 <!--First Grid-->
-<div id="homehead" class="home container-fluid static-page" style="background: url("<?php echo URL . '/img/Library.jpg' ?>") no-repeat center bottom;">
-
+<div id="homehead" class="home container-fluid static-page">
+    
+    <style type="text/css">
+        homehead
+        {
+            background-image:url('<?php echo URL . '/img/Library.jpg' ?>') no-repeat center bottom;
+        }
+    </style>
+    
     <h1>TUTORING SERVICES MADE SIMPLE FOR SFSU STUDENTS!</h1>
 
     <p>
