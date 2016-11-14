@@ -29,6 +29,19 @@ if (!isset($_SESSION)) {
 
     <!-- CSS -->
     <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
+    
+    <!-- validate SFSU emails -->
+    <script>
+        
+	function validateForm() {
+		var x = document.forms["user"]["email"].value;
+		var atpos = x.indexOf("@mail.sfsu.edu");
+		var dotpos = x.lastIndexOf(".");
+		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+			alert("Email is invalid! Must end up with SFSU domain: @mail.sfsu.edu");	
+			return false;
+		}
+	}
         
 	</script>
     
@@ -53,14 +66,38 @@ if (!isset($_SESSION)) {
                 <li><a href="<?php echo URL; ?>tutor/register">Become a Tutor</a></li>
 
             </ul>
+          
+            <?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
 
             <ul class="nav navbar-nav navbar-right">
 
-              <li><a href="<?php echo URL; ?>student/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="<?php echo URL; ?>studentAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['Email']); ?></a></li>
 
-              <li><a href="<?php echo URL; ?>login/index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="<?php echo URL; ?>logout/destroySession"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 
             </ul>
+            
+            <?php else if (isset($_SESSION['loggedInTutor_id'])) : ?>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="<?php echo URL; ?>tutorAccount/account"><span class="glyphicon glyphicon-user"></span> Logged in as <?php echo htmlspecialchars($_SESSION['Email']); ?></a></li>
+
+                <li><a href="<?php echo URL; ?>logout/destroySession"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+            </ul>
+
+            <?php else : ?>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="<?php echo URL; ?>student/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                <li><a href="<?php echo URL; ?>login/index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+            </ul>
+
+            <?php endif; ?>
 
         </div>
 
