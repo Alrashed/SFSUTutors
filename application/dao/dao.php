@@ -59,6 +59,45 @@ class Dao
             }
         }
         
+//        else if ($target == "tutor") {
+//            $firstname = $parameters[":firstname"];
+//            $lastname = $parameters[":lastname"];
+//            $email = $parameters[":email"];
+//            $password = $parameters[":password"];
+//            $birthdate = $parameters[":birthdate"];
+//            $phone = $parameters[":phone"];
+//            $major = $parameters[":major"];
+//            $gpa = $parameters[":gpa"];
+//            $about = $parameters[":about"];
+//            $available = $parameters[":available"];
+//            $offering = $parameters[":offering"];
+//            $price =  $parameters[":price"];
+//            $photo =  $parameters[":photo"];
+//            $transcript =  $parameters[":transcript"];
+//
+//            $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major, gpa, about, available, offering, price) VALUES ('".$firstname."', '".$lastname."', '".$email."', '".$password."', '".$birthdate."', '".$phone."', '".$major."', '".$gpa."', '".$about."' , '".$available."' , '".$offering."', '".$price."')";
+//            $query = $this->db->prepare($sql);
+//            try {
+//                if ($query->execute()) {
+//                    $sql1 = "INSERT INTO upload (tutor_id, photo, transcript) VALUES ('".$this->db->lastInsertId()."', '".$photo."', '".$transcript."')";
+//                    $query1 = $this->db->prepare($sql1);
+//                    try {
+//                        if ($query1->execute()) {
+//                            return true;
+//                        } else {
+//                            return false;
+//                        }
+//                    } catch(PDOException $e) {
+//                        echo $e->getMessage();
+//                    }
+//                } else {
+//                    return false;
+//                }
+//            } catch(PDOException $e) {
+//                echo $e->getMessage();
+//            }
+//        }
+        
         else if ($target == "booking") {
             $tutor_id = $parameters[":tutor_id"];
             $student_id = $parameters[":student_id"];
@@ -97,7 +136,14 @@ class Dao
     *******************/
     public function get($parameters, $target)
     {
-        if ($target == "student") {
+        if ($target == "allStudents") {
+            $sql = "SELECT student_id, firstName, lastName, email FROM student";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
+        else if ($target == "student") {
            $email = $parameters[":email"];
            $password = $parameters[":password"];
            $sql = "SELECT student_id, email FROM student WHERE (email = '".$email."') AND (password = '".$password."')";
@@ -112,7 +158,7 @@ class Dao
                echo $e->getMessage();
            }
         }
-        
+
         else if ($target == "studentInfo") {
             $student_id = $parameters[":student_id"];
             $sql = "SELECT firstName, lastName, email FROM student WHERE student_id = '".$student_id."' ";
@@ -127,7 +173,14 @@ class Dao
                 echo $e->getMessage();
             }
         }
-
+        
+        else if ($target == "allTutors") {
+            $sql = "SELECT tutor_id, firstName, lastName, email FROM tutor";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
         else if ($target == "tutor") {
            $email = $parameters[":email"];
            $password = $parameters[":password"];
@@ -143,7 +196,7 @@ class Dao
                echo $e->getMessage();
            }
         }
-        
+
         else if ($target == "tutorInfo") {
             $tutor_id = $parameters[":tutor_id"];
             $sql = "SELECT firstName, LastName, email FROM tutor WHERE tutor_id = '".$tutor_id."' ";
@@ -166,7 +219,83 @@ class Dao
     **********************/
     public function update($parameters, $target)
     {
+        if ($target == "student") {
+            $student_id = $parameters[":student_id"];
+            $password = $parameters[":password"];
+            $phone = $parameters[":phone"];
+
+            $sql = "UPDATE student SET password = '".$password."', phone = '".$phone."' WHERE student_id = '".$student_id."'";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute()) {
+                
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
         
+        else if ($target == "tutor") {
+            $tutor_id = $parameters[":tutor_id"];
+            $password = $parameters[":password"];
+            $phone = $parameters[":phone"];
+            $about = $parameters[":about"];
+            $available = $parameters[":available"];
+            $offering = $parameters[":offering"];
+            $price =  $parameters[":price"];
+            $photo =  $parameters[":photo"];
+            $transcript =  $parameters[":transcript"];
+
+            $sql = "UPDATE tutor SET password = '".$password."', phone = '".$phone."' , about = '".$about."' , available = '".$available."' , offering = '".$offering."', $price = '".$price."' WHERE tutor_id = '".$tutor_id."'";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute()) {
+                
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+
+            $sql = "SELECT upload_id FROM upload WHERE tutor_id = '".$tutor_id."' ";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            $result = $query->fetch();
+            $uploadID = $result->upload_id;
+
+            $sql1 = "UPDATE upload SET photo = :photo, transcript = :transcript WHERE upload_id = '".$uploadID."'";
+            $query1 = $this->db->prepare($sql1);
+            $parameters1 = array(':photo' => $photo, ':transcript' => $transcript);
+
+            try {
+                if ($query1->execute($parameters1)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+
+        }
+        
+        else if ($target == "editStatus") {
+            $booking_id =  $parameters[":booking_id"];
+            $status =  $parameters[":status"];
+            $sql = "UPDATE booking SET status = '".$status."' WHERE booking_id = '".$booking_id."'";
+            try {
+                if ($sql->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
     
     
@@ -175,7 +304,7 @@ class Dao
     **********************/
     public function delete ($parameters, $target)
     {
-        f($target == "student") {
+       if($target == "student") {
             $sql = "DELETE FROM student WHERE (student_id) = (:student_id)";
             $query = $this->db->prepare($sql);
             try {

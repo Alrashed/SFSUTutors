@@ -17,6 +17,11 @@ class Model
     /******************************
     ** STUDENT SETTERS & GETTERS **
     ******************************/
+    public function getAllStudents()
+    {
+        return $this->dao->get([], "allStudents");
+    }
+    
     public function loginStudent($email, $password)
     {
         $parameters = [
@@ -25,7 +30,7 @@ class Model
         ];
         return $this->dao->get($parameters, "student");
     }
-    
+
     public function createStudent($firstname, $lastname, $email, $password, $birthdate, $phone) 
     {
         $parameters = [
@@ -40,7 +45,7 @@ class Model
         $this->dao->create($parameters, "student");
         
     }
-    
+
     public function getStudentInfo($student_id)
     {
         $parameters = [
@@ -57,6 +62,16 @@ class Model
         return $this->dao->get($parameters, "studentBookings");
     }
     
+    public function editStudent($student_id, $password, $phone) 
+    {
+        $parameters = [
+            ":student_id" => $student_id,
+            ":password" => $password,
+            ":phone" => $phone,
+        ];
+        $this->dao->update($parameters, "editStudent");
+    }
+    
     public function deleteStudent($student_id)
     {
         $parameters = [
@@ -65,11 +80,16 @@ class Model
         $this->dao->delete($parameters, "student");
 
     }
-
+    
     
     /****************************
     ** TUTOR SETTERS & GETTERS **
     ****************************/
+    public function getAllTutors()
+    {
+        return $this->dao->get([], "allTutors");
+    }
+    
     public function loginTutor($email, $password)
     {
         $parameters = [
@@ -78,8 +98,8 @@ class Model
         ];
         return $this->dao->get($parameters, "tutor");
     }
-    
-    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering, $price/*, $photo, $transcript*/) 
+
+    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering/*, $price, $photo, $transcript*/) 
     {
         $parameters = [
             ":firstname" => $firstname,
@@ -101,7 +121,7 @@ class Model
         $this->dao->create($parameters, "tutor");
         
     }
-    
+
     public function getTutorInfo($tutor_id)
     {
         $parameters = [
@@ -116,6 +136,22 @@ class Model
             ":tutor_id" => $tutor_id,
         ];
         return $this->dao->get($parameters, "tutorBookings");
+    }
+    
+    public function editTutor($tutor_id, $password, $phone, $about, $available, $offering, $price, $photo, $transcript) 
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+            ":password" => $password,
+            ":phone" => $phone,
+            ":about" => $about,
+            ":available" => $available,
+            ":offering" => $offering,
+            ":price" => $price,
+            ":photo" => $photo,
+            ":transcript" => $transcript,
+        ];
+        $ this->dao->update($parameters, "editTutor");
     }
     
     public function deleteTutor($tutor_id)
@@ -142,6 +178,15 @@ class Model
             ":cost" => $cost,
         ];
         $this->dao->create($parameters, "booking");
+    }
+    
+    public function editStatus($booking_id, $status) 
+    {
+        $parameters = [
+            ":booking_id" => $booking_id,
+            ":status" => $status,
+        ];
+        $this->dao->update($parameters, "editStatus");
     }
     
     public function deleteBooking($booking_id) 
