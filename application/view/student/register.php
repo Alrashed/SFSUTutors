@@ -64,7 +64,7 @@
 
                         <div class=""> 
 
-                            <input type="date" class="form-control input-lg" name="birthdate">
+                            <input type="text" class="form-control input-lg" name="birthdate">
 
                         </div>
 
