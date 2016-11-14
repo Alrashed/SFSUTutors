@@ -30,6 +30,12 @@ if (!isset($_SESSION)) {
     <!-- CSS -->
     <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
     
+    <style type="text/css">
+        #homehead {
+            background-image:url('<?php echo URL . '/img/Library.jpg' ?>') no-repeat center bottom;
+        }
+    </style>
+    
     <!-- validate SFSU emails -->
     <script>
         
