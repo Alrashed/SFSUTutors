@@ -68,3 +68,162 @@ h2.section-header {
   background-color: #330033; /* Green #1abc9c */ 
   color: #ffffff;
 }
+
+/* demo login css */
+body {
+    font-family: Raleway, sans-serif;
+    font-size: 14px;
+    background-color: #330033;
+    margin-bottom:20vh;
+}
+.container {
+    padding: 0px;
+}
+
+.container .box {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+.placeholder {
+    font-size: 12px;
+}
+.email_field {
+    background-size: 30px 32px;
+    background-image: url('mail.png');
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.username_field {
+    background-size: 30px 32px;
+    background-image: url('account.png');
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.password_field {
+    background-size: 30px 32px;
+    background-image: url('lock.png');
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.signup {
+    height:50px; 
+    width:100%; 
+    font-size:18px; 
+    font-family:'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif; 
+    border-radius: 0px;
+}
+.login {
+    height:40px;
+    width:100%; 
+    font-size:18px; 
+    font-family:'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif; 
+    border-radius:7px; 
+    margin-top: 3%;
+}
+.submit {
+    height:40px;
+    font-size:18px; 
+    font-family:'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif; 
+    border-radius:7px; 
+    margin-top: 3%;
+}
+.acount-profile a::selection{
+    color: #222;
+    background: #F1F1F1;
+}
+.acount-profile a:hover{
+    color: #222;
+    background: #B3B3B3;
+}
+
+/*
+.logo {
+    font-size: 100px;
+    font-weight: bolder;
+    letter-spacing: -6px;
+    color: #222;
+    margin: 20px 30px;
+}
+.logo .number {
+    color: #222;
+    opacity: 0.1;
+}
+.navigation {
+    margin-left: 33px;
+}
+.navigation a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #222;
+    background: #222;
+    color: #fff;
+}
+.navigation a:hover {
+    color: #222;
+    background: transparent;
+}
+.container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 33px;
+}
+.container a {
+    color: #222;
+}
+.container table {
+    font-size: 11px;
+    margin-top: 20px;
+}
+.container table thead td {
+    background-color: #f5f5f5;
+    padding: 4px 10px;
+}
+.container table tbody td {
+    padding: 4px 10px;
+}
+.container .box {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 30px;
+}
+.container input {
+    background-color: #f5f5f5;
+    border: 0;
+    padding: 5px 10px;
+}
+.container input[type="submit"] {
+    background-color: #ccc;
+    cursor: pointer;
+}
+.container input[type="submit"]:hover {
+    background-color: #222;
+    color: #fff;
+}
+.container button {
+    background-color: #ccc;
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.container button:hover {
+    background-color: #222;
+    color: #fff;
+}
+.footer {
+    padding: 20px;
+    margin: 33px;
+    text-align: right;
+    font-size: 11px;
+    opacity: 0.5;
+}
+.footer a {
+    color: #454545;
+} */
