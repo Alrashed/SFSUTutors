@@ -48,13 +48,14 @@ h2.section-header {
 }
 #footer {
     background-color: #262F36;
-    padding-top: 50px;
+    padding-top: 40px;
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 35px;
     position: absolute;
     right: 0;
-    /* bottom: 0; */
+    bottom: 0;
     left: 0;
+    width:100%;
 }          
 .footer-text {
     color: #F8F8F8;
@@ -72,11 +73,20 @@ h2.section-header {
 }
 
 /* demo login css */
+html, body {
+    height: 100%;
+}
+#holder {
+    min-height: 100%;
+    position:relative;
+}
+#body {
+    padding-bottom: 173px;
+}
 body {
     font-family: Raleway, sans-serif;
     font-size: 14px;
     background-color: #330033;
-    /* margin-bottom:20vh; */
 }
 .container {
     padding: 0px;

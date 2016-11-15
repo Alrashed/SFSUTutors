@@ -1,32 +1,36 @@
-    <!--Footer-->
-    <div id="footer">
-      
-        <div class="row footer-text">
-            
-            <div class="col-sm-4">
-                
-                <h4>About Us</h4>
-                <br>
-                <h4>Contact</h4>
-                
-            </div>
-            
-            <div class="col-sm-4">
-                
-                <h2>&copy; SFSU Tutors</h2>
-                
-            </div>
-            
-            <div class="col-sm-4">
-                
-                <h4>Terms of Use</h4>
-                <br>
-                <h4>Privacy Policy</h4>
-                
+        </div>
+
+        <!--Footer-->
+        <div id="footer">
+
+            <div class="row footer-text">
+
+                <div class="col-sm-4">
+
+                    <h4>About Us</h4>
+                    <br>
+                    <h4>Contact</h4>
+
+                </div>
+
+                <div class="col-sm-4">
+
+                    <h2>&copy; SFSU Tutors</h2>
+
+                </div>
+
+                <div class="col-sm-4">
+
+                    <h4>Terms of Use</h4>
+                    <br>
+                    <h4>Privacy Policy</h4>
+
+                </div>
+
             </div>
 
         </div>
-      
+    
     </div>
 
     <!-- jQuery, loaded in the recommended protocol-less way -->

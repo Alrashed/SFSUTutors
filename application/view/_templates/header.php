@@ -110,3 +110,7 @@ if (!isset($_SESSION)) {
 
     </nav>
     
+    <div id="holder">
+        
+        <div id="body">
+            
