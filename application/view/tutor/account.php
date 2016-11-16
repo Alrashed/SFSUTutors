@@ -6,7 +6,7 @@
                 
                 <div class="panel panel-default well">
                 
-                    <div class="panel-heading" style="text-align:center; font-weight:800; font-size:20px">Student Account Overview</div>
+                    <div class="panel-heading" style="text-align:center; font-weight:800; font-size:20px">Tutor Account Overview</div>
 
                     <ul class="nav nav-justified nav-pills" id="account-tab" style="border-radius:0px">
 

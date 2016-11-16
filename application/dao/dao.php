@@ -137,7 +137,7 @@ class Dao
     public function get($parameters, $target)
     {
         if ($target == "allStudents") {
-            $sql = "SELECT student_id, firstName, lastName, email FROM student";
+            $sql = "SELECT student_id, firstName, lastName, email, birthdate, phone FROM student";
             $query = $this->db->prepare($sql);
             $query->execute();
             return $query->fetchAll();
@@ -161,7 +161,7 @@ class Dao
 
         else if ($target == "studentInfo") {
             $student_id = $parameters[":student_id"];
-            $sql = "SELECT firstName, lastName, email FROM student WHERE student_id = '".$student_id."' ";
+            $sql = "SELECT firstName, lastName, email, birthdate, phone FROM student WHERE student_id = '".$student_id."' ";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
@@ -175,7 +175,7 @@ class Dao
         }
         
         else if ($target == "allTutors") {
-            $sql = "SELECT tutor_id, firstName, lastName, email FROM tutor";
+            $sql = "SELECT tutor_id, firstName, lastName, email, birthdate, phone, major, gpa, about, available, offering, price FROM tutor";
             $query = $this->db->prepare($sql);
             $query->execute();
             return $query->fetchAll();
@@ -199,7 +199,7 @@ class Dao
 
         else if ($target == "tutorInfo") {
             $tutor_id = $parameters[":tutor_id"];
-            $sql = "SELECT firstName, LastName, email FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            $sql = "SELECT firstName, lastName, email, birthdate, phone, major, gpa, about, available, offering, price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
