@@ -99,7 +99,7 @@ class Model
         return $this->dao->get($parameters, "tutor");
     }
 
-    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering/*, $price, $photo, $transcript*/) 
+    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering, $price/*, $photo, $transcript*/) 
     {
         $parameters = [
             ":firstname" => $firstname,

@@ -98,7 +98,7 @@
 
                     <div class="" style="text-align:center">
 
-                        <a href="">Already registered? Click here to login.</a>
+                        <a href="<?php echo URL; ?>login/index">Already registered? Click here to login.</a>
 
                     </div>
 

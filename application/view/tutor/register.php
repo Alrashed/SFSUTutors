@@ -64,7 +64,7 @@
 
                         <div class="col-sm-10">
 
-                            <input type="date" class="form-control input-lg" name="birthdate">
+                            <input type="text" class="form-control input-lg" name="birthdate">
 
                         </div>
 
@@ -170,7 +170,7 @@
 
                     <div class="" style="text-align:center">
 
-                        <a href="">Already registered? Click here to login.</a>
+                        <a href="<?php echo URL; ?>login/index">Already registered? Click here to login.</a>
 
                     </div>
 
