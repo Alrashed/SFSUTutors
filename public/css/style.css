@@ -4,8 +4,6 @@ p {
 .margin {
     margin-bottom: 45px;
 }
-
-/* demo css */
 .home {
     text-align: center;
     border-bottom: none;
@@ -71,8 +69,6 @@ h2.section-header {
   background-color: #330033; /* Green #1abc9c */ 
   color: #ffffff;
 }
-
-/* demo login css */
 html, body {
     height: 100%;
 }
@@ -150,6 +146,48 @@ body {
 .acount-profile a:hover{
     color: #222;
     background: #B3B3B3;
+}
+
+/* demo search css*/
+.center {
+    text-align: center;
+}
+.rating > label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    font-size:150%;
+    position:relative;
+    top:-5px;
+}
+img:hover  {
+    box-shadow: 1px 1px 10px grey;
+}
+.view-tutor-button {
+    border-radius: 5px;
+    padding: 8px 8px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #67A2D4;
+    color: white;
+    border: 1px solid #767676;
+    border-right: 3px solid #767676;
+    border-bottom: 3px solid #767676;
+}
+
+.view-tutor-button:hover {
+    background-color: #555555;
+    color: white;
+    border: 1px solid #555555;
+    margin-right: 6px;
+    padding: 6px 6px;
+    margin-top: 6px;
+    margin-left: 4px;
+}
+.view-tutor-button:hover {
+    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24),0 2px 5px 0 rgba(0,0,0,0.19);
 }
 
 /*

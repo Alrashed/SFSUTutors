@@ -68,7 +68,7 @@
                         
                     </div>
                     
-                    <div id="menu1" class="tab-pane fade" style="background-color:#B3B3B3; margin-bottom:50px">
+                    <div id="menu1" class="tab-pane fade well" style="background-color:#B3B3B3; margin-bottom:50px">
                 
                         <form class="panel-body col-lg-offset-0" style="font-size: 16px;background-color: #87CEFA"  role="form" action="<?php echo URL; ?>login/logintutor" method="GET">
 
