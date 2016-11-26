@@ -214,7 +214,7 @@ class Dao
         
         else if ($target == "tutorPage") {
             $tutor_id = $parameters[":tutor_id"];
-            $sql = "SELECT firstName, lastName, email, major, about, available, offering, price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            $sql = "SELECT tutor_id, firstName, lastName, email, major, about, available, offering, price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {

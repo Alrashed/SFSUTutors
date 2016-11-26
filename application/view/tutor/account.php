@@ -21,44 +21,66 @@
                         <div id="home" class="tab-pane fade in active" style="width:100%">
 
                             <div class="panel-body">
+                                        
+                                        <div class="row">
+                                            
+                                            <div class="" style="padding-bottom: 6%;">
+                                            
+                                                <h5 class="col-lg-3 center"><i>First Name   </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->firstName)) echo htmlspecialchars($tutor[0]->firstName, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
+                                                                                        
+                                            <div class="" style="padding-bottom: 6%;">
+                                                
+                                                <h5 class="col-lg-3 center"><i>Last Name     </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->lastName)) echo htmlspecialchars($tutor[0]->lastName, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
+                                                    
+                                            <div class="" style="padding-bottom: 6%;">
+                                                
+                                                <h5 class="col-lg-3 center"><i>Email </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->email)) echo htmlspecialchars($tutor[0]->email, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
+                            
+                                            <div class="" style="padding-bottom: 6%;">
+                                                
+                                                <h5 class="col-lg-3 center"><i>Phone No.     </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->phone)) echo htmlspecialchars($tutor[0]->phone, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
+                                                    
+                                            <div class="" style="padding-bottom: 6%;">
+                                                
+                                                <h5 class="col-lg-3 center"><i>Major </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->major)) echo htmlspecialchars($tutor[0]->major, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
 
-                                <h5 class="col-lg-3 col-lg-offset-1"><i>First Name   </i></h5><h5 class="float-left">: <?php if (isset($tutor[0]->firstName)) echo htmlspecialchars($tutor[0]->firstName, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
-                    
-                                <h5 class="col-lg-3 col-lg-offset-1  float-left"><i>Last Name     </i></h5><h5 class="float-left">: <?php if (isset($tutor[0]->lastName)) echo htmlspecialchars($tutor[0]->lastName, ENT_QUOTES, 'UTF-8'); ?></h5>
-                    
-                                </br></br></br>
-    
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>Email </i></h5><h5>: <?php if (isset($tutor[0]->email)) echo htmlspecialchars($tutor[0]->email, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
-                                
-                                <h5 class="col-lg-3 col-lg-offset-1  float-left"><i>Phone No.     </i></h5><h5 class="float-left">: <?php if (isset($tutor[0]->phone)) echo htmlspecialchars($tutor[0]->phone, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                            <div class="" style="padding-bottom: 6%;">
 
-                                </br></br></br>
-                                
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>Major </i></h5><h5>: <?php if (isset($tutor[0]->major)) echo htmlspecialchars($tutor[0]->major, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
+                                                <h5 class="col-lg-3 center"><i>GPA </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->gpa)) echo htmlspecialchars($tutor[0]->gpa , ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
 
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>GPA </i></h5><h5>: <?php if (isset($tutor[0]->gpa)) echo htmlspecialchars($tutor[0]->gpa , ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
+                                            <div class="" style="padding-bottom: 6%;">
 
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>About Me </i></h5><h5 style="word-wrap: break-word; white-space: pre-line;">: <?php if (isset($tutor[0]->about)) echo htmlspecialchars($tutor[0]->about, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
+                                                <h5 class="col-lg-3 center"><i>About Me </i></h5><h5 class="col-lg-9" style="word-wrap: break-word; white-space: pre-line;">: <?php if (isset($tutor[0]->about)) echo htmlspecialchars($tutor[0]->about, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
 
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>Offering </i></h5><h5>: <?php if (isset($tutor[0]->offering)) echo htmlspecialchars($tutor[0]->offering, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
-                                
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>Hourly Rate </i></h5><h5>: <?php if (isset($tutor[0]->price)) echo htmlspecialchars($tutor[0]->price, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                
-                                </br></br></br>
-                                
-                            </div>
+                                            <div class="" style="padding-bottom: 6%;">
+
+                                                <h5 class="col-lg-3 center"><i>Offering </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->offering)) echo htmlspecialchars($tutor[0]->offering, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                                
+                                            </div>
+
+                                            <div class="" style="padding-bottom: 6%;">
+
+                                                <h5 class="col-lg-3 center"><i>Hourly Rate </i></h5><h5 class="col-lg-9">: <?php if (isset($tutor[0]->price)) echo "$". htmlspecialchars($tutor[0]->price, ENT_QUOTES, 'UTF-8'); ?> /h</h5>
+                                                
+                                            </div>    
+
+                                        </div>
+                                        
+                                    </div>
 
                         </div>
 
