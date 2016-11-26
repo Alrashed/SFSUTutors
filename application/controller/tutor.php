@@ -19,6 +19,18 @@ class Tutor extends Controller
         header('location: ' . URL . 'login/index');
     }
     
+    public function viewTutor($tutor_id) 
+    {
+        if (isset($tutor_id)) {
+            
+            $tutorPage = $this->model->getTutorPage($tutor_id);
+            
+            require APP . 'view/_templates/header.php';
+            require APP . 'view/tutor/view.php';
+            require APP . 'view/_templates/footer.php';
+        }
+    }
+    
     public function deleteTutor($tutor_id)
     {
         if (isset($tutor_id)) {

@@ -130,6 +130,14 @@ class Model
         return $this->dao->get($parameters, "tutorInfo");
     }
     
+    public function getTutorPage($tutor_id)
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+        ];
+        return $this->dao->get($parameters, "tutorPage");
+    }
+    
     public function getTutorBooking($tutor_id)
     {
         $parameters = [

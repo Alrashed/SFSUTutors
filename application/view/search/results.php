@@ -114,7 +114,7 @@
 
                 <div class="panel-heading clearfix" style="background:#d0d0d0">
 
-                    <span class="panel-title pull-left"><b>Showing 1-10 of <?php echo count($tutors) ?> tutors that meet your criteria.</b></span>
+                    <span class="panel-title pull-left"><b>Showing 1-6 of <?php echo count($tutors) ?> tutors that meet your criteria.</b></span>
 
                     <div>
 
@@ -149,7 +149,7 @@
 
                             <div class="col-sm-3 col-lg-2 panel-body" style="float:left">
 
-                                <a href="<?php echo URL. 'tutor/view/' . htmlspecialchars($tutor->tutor_id, ENT_QUOTES, 'UTF-8'); ?>" >
+                                <a href="<?php echo URL. 'tutor/viewtutor/' . htmlspecialchars($tutor->tutor_id, ENT_QUOTES, 'UTF-8'); ?>" >
                                     <img src="<?php echo URL . '/img/demo-image.png' ?>">
                                 </a>
 
@@ -209,7 +209,7 @@
 
                                             <div class="">
 
-                                                <form action="<?php echo URL . 'tutor/view/' . htmlspecialchars($product->Product_id, ENT_QUOTES, 'UTF-8'); ?>">
+                                                <form action="<?php echo URL . 'tutor/viewtutor/' . htmlspecialchars($tutor->tutor_id, ENT_QUOTES, 'UTF-8'); ?>">
 
                                                     <button class="view-tutor-button"><b>VIEW TUTOR</b></button>
 

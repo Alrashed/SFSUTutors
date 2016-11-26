@@ -187,3 +187,6 @@ img:hover  {
 .view-tutor-button:hover {
     box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24),0 2px 5px 0 rgba(0,0,0,0.19);
 }
+.reviews-list li:last-child {
+    border-bottom: 1px solid #DEDEDE;
+}
