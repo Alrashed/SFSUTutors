@@ -46,7 +46,7 @@
                                 
                                 </br></br></br>
 
-                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>About Me </i></h5><h5 style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left;">: <?php if (isset($tutor[0]->about)) echo htmlspecialchars($tutor[0]->about, ENT_QUOTES, 'UTF-8'); ?></h5>
+                                <h5 class="col-lg-3 col-lg-offset-1 float-left"><i>About Me </i></h5><h5 style="word-wrap: break-word; white-space: pre-line;">: <?php if (isset($tutor[0]->about)) echo htmlspecialchars($tutor[0]->about, ENT_QUOTES, 'UTF-8'); ?></h5>
                                 
                                 </br></br></br>
 

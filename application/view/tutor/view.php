@@ -23,7 +23,7 @@
                             <div class="col-md-9 panel-body">
 
                                 <h3 class="tutor-name" style="float: left; margin:0px; text-transform: uppercase;"><b>
-                                    <?php if (isset($tutor->firstName)) {
+                                    <?php if (isset($tutorPage->firstName)) {
                                             echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8');
                                             echo "&nbsp". htmlspecialchars($tutor->lastName, ENT_QUOTES, 'UTF-8'); }
                                     ?></b>
@@ -32,7 +32,7 @@
                                 <br><br>
 
                                 <h4 class="tutor-major" style="float: left; margin:0px; padding-top: 10px;"><b>Major:&nbsp</b>
-                                    <?php if (isset($tutor->major))
+                                    <?php if (isset($tutorPage->major))
                                             echo htmlspecialchars($tutor->major, ENT_QUOTES, 'UTF-8');
                                     ?>
                                 </h4>
@@ -42,7 +42,7 @@
                             <div class="col-md-3 panel-body">
 
                                 <h3 class="tutor-price" style=" margin:0px;"><b>
-                                    <?php if (isset($tutor->price))
+                                    <?php if (isset($tutorPage->price))
                                             echo "$". htmlspecialchars($tutor->price, ENT_QUOTES, 'UTF-8');
                                     ?> /h</b>
                                 </h3>
@@ -66,7 +66,7 @@
                         <h4 style="text-align: left; width: 100%;"><b>ABOUT ME</b></h4>
 
                         <p style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left;">
-                            <?php if (isset($tutor->about))
+                            <?php if (isset($tutorPage->about))
                                     echo htmlspecialchars($tutor->about, ENT_QUOTES, 'UTF-8');
                             ?>
                         </p>
@@ -78,7 +78,7 @@
                         <h4 style="text-align: left; width: 100%;"><b>CLASSES OFFERED</b></h4>
 
                         <p style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left;">
-                            <?php if (isset($tutor->offering))
+                            <?php if (isset($tutorPage->offering))
                                     echo htmlspecialchars($tutor->offering, ENT_QUOTES, 'UTF-8');
                             ?>
                         </p>
@@ -139,7 +139,7 @@
                         <h4 style=" width: 100%;"><b>AVAILABILITY</b></h4>
                         <br>
                         <p style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left; margin-bottom: 20px;"><b>I am available on:</b>
-                            <?php if (isset($tutor->available))
+                            <?php if (isset($tutorPage->available))
                                     echo htmlspecialchars($tutor->available, ENT_QUOTES, 'UTF-8');
                             ?></p>
 
@@ -162,7 +162,7 @@
                     <div class="col-sm-12">
 
                         <h4 style=" width: 100%;"><b>MESSAGE 
-                            <?php if (isset($tutor->firstName)) {
+                            <?php if (isset($tutorPage->firstName)) {
                                     echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8'); }
                             ?></b>
                         </h4>
