@@ -99,7 +99,7 @@
 
                                 <div class="col-xs-8 col-sm-12 col-md-8" style="">
 
-                                    <h5 style="text-align: left; width: 100%;     font-size: 16px;"><b>Student Name</b></h5>
+                                    <h5 style="text-align: left; width: 100%; font-size: 16px;"><b>Student Name</b></h5>
 
                                     <p style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 

@@ -218,7 +218,8 @@ class Dao
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
-                    return $query->fetchAll();
+                    $result = $query->fetch();
+                    return $result;
                 } else {
                     return false;
                 }
