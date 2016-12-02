@@ -175,15 +175,18 @@ class Model
     /******************************
     ** BOOKING SETTERS & GETTERS **
     ******************************/
-    public function createBooking($tutor_id, $student_id, $class, $time, $length, $cost) 
+    public function createBooking($tutor_id, $student_id, $class, $date, $time, $length, $total, $status, $created_at) 
     {
         $parameters = [
             ":tutor_id" => $tutor_id,
             ":student_id" => $student_id,
             ":class" => $class,
+            ":date" => $date,
             ":time" => $time,
             ":length" => $length,
-            ":cost" => $cost,
+            ":total" => $total,
+            ":status" => $status,
+            ":created_at" => $created_at,
         ];
         $this->dao->create($parameters, "booking");
     }

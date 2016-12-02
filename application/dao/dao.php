@@ -102,22 +102,16 @@ class Dao
             $tutor_id = $parameters[":tutor_id"];
             $student_id = $parameters[":student_id"];
             $class = $parameters[":class"];
+            $date = $parameters[":date"];
             $time = $parameters[":time"];
             $length = $parameters[":length"];
-            $cost = $parameters[":cost"];
+            $total = $parameters[":total"];
+            $status = $parameters[":status"];
+            $created_at = $parameters[":created_at"];
+            
+            $sql ="INSERT INTO booking (tutor_id, student_id, class, date, time, length, total, status, created_at) VALUES('".$tutor_id."', '".$student_id."', '".$class."', '".$date."', '".$time."', '".$length."', '".$total."', '".$status."', '".$created_at."')";
 
-            $sql = "SELECT price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
-            //echo $sql;
             $query = $this->db->prepare($sql);
-            $query->execute();
-            $result = $query->fetch();
-            $price = $result->price;
-            $cost = $length * $price;
-            //echo $cost;
-
-            $sql1 ="INSERT INTO booking (tutor_id, student_id, class, time, length, cost) VALUES('".$tutor_id."', '".$student_id."', '".$class."','".$time."', '".$length."', '".$cost."')";
-
-            $query = $this->db->prepare($sql1);
             try {
                 if ($query->execute()) {
                     return true;

@@ -1,4 +1,4 @@
-<div class="container" style="wdith: 80%;">
+<div class="container" style="width: 80%;">
 
     <div class="row" style="margin-top: 6%; margin-bottom: 4%;">
 
@@ -145,7 +145,7 @@
 
                         <div class="" style="">
 
-                            <form action="">
+                            <form action="<?php echo URL . 'booking/tutor/' . htmlspecialchars($tutorPage->tutor_id, ENT_QUOTES, 'UTF-8'); ?>">
 
                                 <button class="view-tutor-button"><b>BOOK NOW</b></button>
 

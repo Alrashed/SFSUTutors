@@ -1,6 +1,6 @@
 <META http-equiv="refresh" content="5;URL=<?php echo URL; ?>">
 
-<div class="container col-lg-10 col-lg-offset-1 text-center jumbotron" style="border-radius: 10px">
+<div class="container col-lg-10 col-lg-offset-1 text-center jumbotron" style="border-radius: 10px; margin-top: 6%; margin-bottom: 4%;">
     
     <h4>You have been logged out!</h4>
     
