@@ -9,8 +9,8 @@
                 <div class="panel-heading clearfix center" style="background:#d0d0d0; margin: -16px -15px 0 -15px;">
 
                     <h3 style="text-transform: uppercase;"><b>APPOINTMENT BOOKING WITH 
-                        <?php if (isset($tutorPage->firstName))
-                                echo htmlspecialchars($tutorPage->firstName, ENT_QUOTES, 'UTF-8');
+                        <?php if (isset($tutor->firstName))
+                                echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8');
                         ?></b>
                     </h3>
 
@@ -82,8 +82,8 @@
 
                             <h3 class="col-xs-3" style="float: right; ">
                                 <b>TOTAL: $<span id="totalprice">
-                                    <?php if (isset($tutorPage->price))
-                                            echo htmlspecialchars($tutorPage->price, ENT_QUOTES, 'UTF-8');
+                                    <?php if (isset($tutor->price))
+                                            echo htmlspecialchars($tutor->price, ENT_QUOTES, 'UTF-8');
                                     ?></span></b>
                             </h3>
 
@@ -268,11 +268,11 @@
                         <h4 style=" width: 100%;"><b>AVAILABILITY</b></h4>
                         <br>
                         <p style="word-wrap: break-word; white-space: pre-line; float: left; text-align: left; margin-bottom: 20px;"><b>
-                            <?php if (isset($tutorPage->firstName))
-                                    echo htmlspecialchars($tutorPage->firstName, ENT_QUOTES, 'UTF-8');
+                            <?php if (isset($tutor->firstName))
+                                    echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8');
                             ?> is available on:</b>
-                            <?php if (isset($tutorPage->available))
-                                    echo htmlspecialchars($tutorPage->available, ENT_QUOTES, 'UTF-8');
+                            <?php if (isset($tutor->available))
+                                    echo htmlspecialchars($tutor->available, ENT_QUOTES, 'UTF-8');
                             ?>
                         </p>
 
@@ -285,8 +285,8 @@
                     <div class="col-sm-12">
 
                         <h4 style=" width: 100%; text-transform: uppercase;"><b>
-                            <?php if (isset($tutorPage->firstName))
-                                    echo htmlspecialchars($tutorPage->firstName, ENT_QUOTES, 'UTF-8');
+                            <?php if (isset($tutor->firstName))
+                                    echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8');
                             ?>'S SCHEDULE</b>
                         </h4>
                         <br>
