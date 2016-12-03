@@ -31,6 +31,7 @@ class Booking extends Controller
             if(isset($tutor_id)) {
             
                 $tutor = $this->model->getTutorPage($tutor_id);
+                $bookings = $this->model->getTutorSchedule($tutor_id);
 
                 require APP . 'view/_templates/header.php';
                 require APP . 'view/booking/index.php';

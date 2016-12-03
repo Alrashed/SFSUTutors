@@ -221,6 +221,22 @@ class Dao
                 echo $e->getMessage();
             }
         }
+        
+        else if ($target == "tutorSchedule") {
+            $tutor_id = $parameters[":tutor_id"];
+            $sql = "SELECT booking_id, DATE_FORMAT(date,'%m/%d/%Y') as date, TIME_FORMAT(time, '%h:%i %p') as time, length FROM booking WHERE tutor_id = '".$tutor_id."' ";
+            $query = $this->db->prepare($sql);
+            try {
+                if ($query->execute()) {
+                    $result = $query->fetchAll();
+                    return $result;
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
     
     

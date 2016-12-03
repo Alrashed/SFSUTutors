@@ -215,4 +215,12 @@ class Model
         ];
         return $this->dao->get($parameters, "booking");
     }
+    
+    public function getTutorSchedule($tutor_id) 
+    {
+        $parameters = [
+            ":tutor_id" => $tutor_id,
+        ];
+        return $this->dao->get($parameters, "tutorSchedule");
+    }
 }

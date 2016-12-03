@@ -295,31 +295,38 @@
                             <div class="col-sm-12">
 
                                 <table class="table">
+                                    
                                     <thead>
-                                      <tr>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Length</th>
-                                      </tr>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Length</th>
+                                        </tr>
                                     </thead>
+                                    
                                     <tbody>
-                                      <tr>
-                                        <td>12/01/2016</td>
-                                        <td>4:00 PM</td>
-                                        <td>2 hours</td>
-                                      </tr>
-                                      <tr>
-                                        <td>12/13/2016</td>
-                                        <td>12:00 PM</td>
-                                        <td>1 hour</td>
-                                      </tr>
-                                      <tr>
-                                        <td>12/19/2016</td>
-                                        <td>2:00 PM</td>
-                                        <td>1 hour</td>
-                                      </tr>
+                                        
+                                    <?php foreach ($bookings as $booking) { ?>
+                                        
+                                        <tr>
+                                            <td><?php if (isset($booking->date))
+                                                        echo htmlspecialchars($booking->date, ENT_QUOTES, 'UTF-8'); ?>
+                                            </td>
+                                            
+                                            <td><?php if (isset($booking->time))
+                                                        echo htmlspecialchars($booking->time, ENT_QUOTES, 'UTF-8'); ?>
+                                            </td>
+                                            
+                                            <td><?php if (isset($booking->length))
+                                                        echo htmlspecialchars($booking->length, ENT_QUOTES, 'UTF-8'); ?>
+                                            </td>
+                                        </tr>
+                                        
+                                    <?php } ?>
+                                        
                                     </tbody>
-                                  </table>
+                                    
+                                </table>
 
                             </div>
 
