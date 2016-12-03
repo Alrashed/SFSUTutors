@@ -29,9 +29,10 @@ class Login extends Controller
                 $_SESSION['loggedInStudent_id'] = $student->student_id;
                 $_SESSION['email'] = $student->email;
                 header('location: ' . URL . 'home');
-            } else {
-                header('location: ' . URL . 'login?msg=failed');
-            }
+            } 
+//            else {
+//                header('location: ' . URL . 'login?msg=failed');
+//            }
         }
     }
     
@@ -49,9 +50,10 @@ class Login extends Controller
                 $_SESSION['loggedInTutor_id'] = $tutor->tutor_id;
                 $_SESSION['email'] = $tutor->email;
                 header('location: ' . URL . 'home');
-            } else {
-                header('location: ' . URL . 'login?msg=failed');
-            }
+            } 
+//            else {
+//                header('location: ' . URL . 'login?msg=failed');
+//            }
         }
     }
 }

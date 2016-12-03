@@ -15,9 +15,8 @@
 
                 <div class="col-sm-3">
                     
-                    <div class="social">&#62220;</div>
-                    <div class="social">&#62217;</div>
-                    <div class="social">&#62223;</div>
+                    <div class="">About</div>
+                    <div class="">contact</div>
                     
                 </div>
 
