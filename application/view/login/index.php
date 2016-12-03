@@ -1,4 +1,4 @@
-<div class="container" id="login">
+<div class="container" id="">
     
     <div class="box" style="margin-top:4%; margin-bottom:4%;">
 
@@ -56,11 +56,6 @@
 
                             <div class="form-group">
 
-                                <?php
-                                    if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                                        echo "<p class="center"><font color='red'>You entered an invalid SF State Email or Password.</font></p>"; }
-                                ?>
-
                                 <div class="col-lg-4 col-lg-offset-4">
 
                                     <button type="submit" name="loginstudent" class="btn btn-success login" >Login</button>
@@ -102,11 +97,6 @@
                             </div>
 
                             <div class="form-group">
-
-                                <?php
-                                    if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                                        echo "<p class="center"><font color='red'>You entered an invalid SF State Email or Password.</font></p>"; }
-                                ?>
 
                                 <div class="col-lg-4 col-lg-offset-4">
 
