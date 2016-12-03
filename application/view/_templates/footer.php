@@ -5,26 +5,20 @@
 
             <div class="row footer-text">
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
 
-                    <h4>About Us</h4>
-                    <br>
-                    <h4>Contact</h4>
+                    <h4>&copy; 2016 SFSU Tutors, All Rights Reserved.</h4>
 
                 </div>
+                
+                <div class="col-sm-2"></div>
 
-                <div class="col-sm-4">
-
-                    <h2>&copy; SFSU Tutors</h2>
-
-                </div>
-
-                <div class="col-sm-4">
-
-                    <h4>Terms of Use</h4>
-                    <br>
-                    <h4>Privacy Policy</h4>
-
+                <div class="col-sm-3">
+                    
+                    <div class="social">&#62220;</div>
+                    <div class="social">&#62217;</div>
+                    <div class="social">&#62223;</div>
+                    
                 </div>
 
             </div>

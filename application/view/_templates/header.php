@@ -36,22 +36,7 @@ if (!isset($_SESSION)) {
             background-size: cover;
         }
     </style>
-    
-    <!-- validate SFSU emails -->
-    <script>
-        
-	function validateForm() {
-		var x = document.forms["user"]["email"].value;
-		var atpos = x.indexOf("@mail.sfsu.edu");
-		var dotpos = x.lastIndexOf(".");
-		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-			alert("Email is invalid! Must end up with SFSU domain: @mail.sfsu.edu");	
-			return false;
-		}
-	}
-        
-	</script>
-    
+            
 </head>
     
 <body>
@@ -68,7 +53,7 @@ if (!isset($_SESSION)) {
 
             <ul class="nav navbar-nav">
 
-                <li><a href="<?php echo URL; ?>search/results">Browse Tutors</a></li>
+                <li><a href="<?php echo URL; ?>search/results">Find a Tutor</a></li>
 
                 <li><a href="<?php echo URL; ?>tutor/register">Become a Tutor</a></li>
 
@@ -98,7 +83,7 @@ if (!isset($_SESSION)) {
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="<?php echo URL; ?>student/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="<?php echo URL; ?>student/register"><span class="glyphicon glyphicon-user"></span>Student Sign Up</a></li>
 
                 <li><a href="<?php echo URL; ?>login/index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
