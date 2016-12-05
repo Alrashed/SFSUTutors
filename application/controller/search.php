@@ -19,10 +19,10 @@ class Search extends Controller
         $majors = $this->model->getAllMajors();
         $classcode = $_SESSION['classcode'];
         $major_id = $_SESSION['major_id'];
-        
+        $sortby = $_GET["sortby"];
         //sort by high price
-        if (isset($_GET["sortby"]=="high-to-low")) {
-            $sorttype="high-to-low";
+        if ($sortby == "high-to-low") {
+            $sorttype = "high-to-low";
             
             if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
                 $filtertype = "both";
@@ -52,8 +52,8 @@ class Search extends Controller
         }
         
         //sort by low price
-        else if (isset($_GET["sortby"]=="low-to-high")) {
-            $sorttype="low-to-high";
+        else if ($sortby == "low-to-high") {
+            $sorttype = "low-to-high";
             
             if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
                 $filtertype = "both";
