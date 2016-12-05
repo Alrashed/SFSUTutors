@@ -435,7 +435,7 @@ class Dao
                     
                     $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') ORDER BY cast(t.price as SIGNED) ASC";
                 }
-                else ($filtering == "classcode") {
+                else if ($filtering == "classcode") {
                     $classcode = $parameters[":filterinput1"];
                     
                     $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
