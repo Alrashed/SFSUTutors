@@ -147,7 +147,7 @@ class Model
         return $this->dao->get($parameters, "tutorBookings");
     }
     
-    public function editTutor($tutor_id, $password, $phone, $major_id, $major, $about, $available, $offering, $price, $photo, /*$transcript*/) 
+    public function editTutor($tutor_id, $password, $phone, $major_id, $major, $about, $available, $offering, $price, $photo/* ,$transcript*/) 
     {
         $parameters = [
             ":tutor_id" => $tutor_id,
