@@ -18,6 +18,8 @@ class Search extends Controller
     {
         $majors = $this->model->getAllMajors();
         $tutors = $this->model->getAllTutors();
+        $_SESSION['classcode'] = "";
+        $_SESSION['major_id'] = "";
 //        $classcode = $_SESSION['classcode'];
 //        $major_id = $_SESSION['major_id'];
         
