@@ -99,7 +99,7 @@ class Model
         return $this->dao->get($parameters, "tutor");
     }
 
-    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major, $gpa, $about, $available, $offering, $price/*, $photo, $transcript*/) 
+    public function createtutor($firstname, $lastname, $email, $password, $birthdate, $phone, $major_id, $major, $gpa, $about, $available, $offering, $price, $photo/*, $transcript*/) 
     {
         $parameters = [
             ":firstname" => $firstname,
@@ -108,13 +108,14 @@ class Model
             ":password" => $password,
             ":birthdate" => $birthdate,
             ":phone" => $phone,
+            ":major_id" => $major_id,
             ":major" => $major,
             ":gpa" => $gpa,
             ":about" => $about,
             ":available" => $available,
             ":offering" => $offering,
             ":price" => $price,
-//            ":photo" => $photo,
+            ":photo" => $photo,
 //            ":transcript" => $transcript,
             
         ];
@@ -146,18 +147,20 @@ class Model
         return $this->dao->get($parameters, "tutorBookings");
     }
     
-    public function editTutor($tutor_id, $password, $phone, $about, $available, $offering, $price, $photo, $transcript) 
+    public function editTutor($tutor_id, $password, $phone, $major_id, $major, $about, $available, $offering, $price, $photo, /*$transcript*/) 
     {
         $parameters = [
             ":tutor_id" => $tutor_id,
             ":password" => $password,
             ":phone" => $phone,
+            ":major_id" => $major_id,
+            ":major" => $major,
             ":about" => $about,
             ":available" => $available,
             ":offering" => $offering,
             ":price" => $price,
             ":photo" => $photo,
-            ":transcript" => $transcript,
+//            ":transcript" => $transcript,
         ];
         $this->dao->update($parameters, "editTutor");
     }
@@ -222,5 +225,114 @@ class Model
             ":tutor_id" => $tutor_id,
         ];
         return $this->dao->get($parameters, "tutorSchedule");
+    }
+    
+    
+    /***************************
+    ** SEARCH FILTER AND SORT **
+    ***************************/
+    public function getAllMajors()
+    {
+        $parameters = [
+        ];
+        return $this->dao->get($parameters, "majors");
+    }
+    
+    public function getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2="") 
+    {
+        if ($filtertype == "both") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+                ":filterinput2" => $filterinput2,
+            ];
+            if ($sorttype == "high-to-low") {
+                return $this->dao->search($parameters, "HighToLowTutors");
+            }
+            else if ($sorttype == "low-to-high") {
+                return $this->dao->search($parameters, "LowToHighTutors");
+            }
+        }
+        else if ($filtertype == "major_id") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+            ];
+            if ($sorttype == "high-to-low") {
+                return $this->dao->search($parameters, "HighToLowTutors");
+            }
+            else if ($sorttype == "low-to-high") {
+                return $this->dao->search($parameters, "LowToHighTutors");
+            }
+        }
+        else if ($filtertype == "classcode") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+            ];
+            if ($sorttype == "high-to-low") {
+                return $this->dao->search($parameters, "HighToLowTutors");
+            }
+            else if ($sorttype == "low-to-high") {
+                return $this->dao->search($parameters, "LowToHighTutors");
+            }
+        }
+        else if ($filtertype == "") {
+            $parameters = [
+            ];
+            if ($sorttype == "high-to-low") {
+                return $this->dao->search($parameters, "HighToLowTutors");
+            }
+            else if ($sorttype == "low-to-high") {
+                return $this->dao->search($parameters, "LowToHighTutors");
+            }
+        }
+/*        if (($filterinput1 != "") && ($filterinput2 != "")) {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+                ":filterinput2" => $filterinput2,
+            ];
+        }
+        else if (($filterinput1 != "") && ($filterinput2 == "")) {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+            ];
+        }
+        else if ($filterinput1 == "") {
+            $parameters = [
+            ];
+        }
+        if ($sorttype == "high-to-low")
+            return $this->dao->search($parameters, "HighToLowTutors");
+        else if ($sorttype == "low-to-high")
+            return $this->dao->search($parameters, "LowToHighTutors");*/
+    }
+    
+    public function getFilteredTutors($filtertype, $filterinput1, $filterinput2="") 
+    {
+        if ($filtertype == "both") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+                ":filterinput2" => $filterinput2,
+            ];
+            return $this->dao->search($parameters, "FilterBothTutors");
+        }
+        else if ($filtertype == "major_id") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+            ];
+            return $this->dao->search($parameters, "FilterMajorTutors");
+        }
+        else if ($filtertype == "classcode") {
+            $parameters = [
+                ":filtertype" => $filtertype,
+                ":filterinput1" => $filterinput1,
+            ];
+            return $this->dao->search($parameters, "FilterClassTutors");
+        }
     }
 }

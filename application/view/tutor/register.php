@@ -20,7 +20,7 @@
 
                         </div>
 
-                        <label class="control-label col-sm-2" for="last name" >Last Name:</label>
+                        <label class="control-label col-sm-2" for="last name" style="margin-left: -4%;">Last Name:</label>
 
                         <div class="col-sm-3">
 
@@ -97,6 +97,25 @@
                         <div class="col-sm-4">
 
                             <input type="text" class="form-control placeholder" name= "major" placeholder="Enter your major" required>
+
+                        </div>
+                        
+                        <label class="control-label col-sm-2" for="major_id" style="margin-left: -5%;">Major ID:</label>
+
+                        <div class="col-sm-2">
+
+                            <select name="major_id" id="major_id" style="width: 140px !important; min-width: 100px; max-width: 140px; height: 34px;">
+                                
+                                <option value="">Select major ID</option>
+                                <?php
+                                    foreach ($majors as $major) {
+                                        if (isset($major->mName)) {
+                                            echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . "</option>";
+                                        }
+                                    }
+                                ?>
+                                
+                            </select>
 
                         </div>
 

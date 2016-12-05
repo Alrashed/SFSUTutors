@@ -157,7 +157,12 @@ body {
     position:relative;
     top:-5px;
 }
-img:hover  {
+.img-tutor {
+    border-radius: 5px;
+    height: 100px;
+    width: 100px;
+}
+.img-tutor:hover  {
     box-shadow: 1px 1px 10px grey;
 }
 .view-tutor-button {
@@ -189,4 +194,11 @@ img:hover  {
 }
 .reviews-list li:last-child {
     border-bottom: 1px solid #DEDEDE;
+}
+h5.account-overview {
+    font-size: 16px;
+}
+i.account-overview {
+    font-style: normal;
+    font-weight: bold;
 }

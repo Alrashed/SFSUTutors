@@ -45,51 +45,12 @@ class Dao
             }
         }
         
-        else if ($target == "tutor") {
-            $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major, gpa, about, available, offering, price) VALUES (:firstname, :lastname, :email, :password, :birthdate, :phone, :major, :gpa, :about, :available, :offering, :price)";
-            $query = $this->db->prepare($sql);
-            try {
-                if ($query->execute($parameters)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch(PDOException $e) {
-                echo $e->getMessage();
-            }
-        }
-        
 //        else if ($target == "tutor") {
-//            $firstname = $parameters[":firstname"];
-//            $lastname = $parameters[":lastname"];
-//            $email = $parameters[":email"];
-//            $password = $parameters[":password"];
-//            $birthdate = $parameters[":birthdate"];
-//            $phone = $parameters[":phone"];
-//            $major = $parameters[":major"];
-//            $gpa = $parameters[":gpa"];
-//            $about = $parameters[":about"];
-//            $available = $parameters[":available"];
-//            $offering = $parameters[":offering"];
-//            $price =  $parameters[":price"];
-//            $photo =  $parameters[":photo"];
-//            $transcript =  $parameters[":transcript"];
-//
-//            $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major, gpa, about, available, offering, price) VALUES ('".$firstname."', '".$lastname."', '".$email."', '".$password."', '".$birthdate."', '".$phone."', '".$major."', '".$gpa."', '".$about."' , '".$available."' , '".$offering."', '".$price."')";
+//            $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major_id, major, gpa, about, available, offering, price) VALUES (:firstname, :lastname, :email, :password, :birthdate, :phone, :major, :gpa, :about, :available, :offering, :price)";
 //            $query = $this->db->prepare($sql);
 //            try {
-//                if ($query->execute()) {
-//                    $sql1 = "INSERT INTO upload (tutor_id, photo, transcript) VALUES ('".$this->db->lastInsertId()."', '".$photo."', '".$transcript."')";
-//                    $query1 = $this->db->prepare($sql1);
-//                    try {
-//                        if ($query1->execute()) {
-//                            return true;
-//                        } else {
-//                            return false;
-//                        }
-//                    } catch(PDOException $e) {
-//                        echo $e->getMessage();
-//                    }
+//                if ($query->execute($parameters)) {
+//                    return true;
 //                } else {
 //                    return false;
 //                }
@@ -97,6 +58,47 @@ class Dao
 //                echo $e->getMessage();
 //            }
 //        }
+        
+        else if ($target == "tutor") {
+            $firstname = $parameters[":firstname"];
+            $lastname = $parameters[":lastname"];
+            $email = $parameters[":email"];
+            $password = $parameters[":password"];
+            $birthdate = $parameters[":birthdate"];
+            $phone = $parameters[":phone"];
+            $major_id = $parameters[":major_id"];
+            $major = $parameters[":major"];
+            $gpa = $parameters[":gpa"];
+            $about = $parameters[":about"];
+            $available = $parameters[":available"];
+            $offering = $parameters[":offering"];
+            $price =  $parameters[":price"];
+            $photo =  $parameters[":photo"];
+//            $transcript =  $parameters[":transcript"];
+
+            $sql1 = "INSERT INTO upload (photo) VALUES (:photo)";
+            $query = $this->db->prepare($sq1);
+            try {
+                if ($query->execute()) {
+                    $sql = "INSERT INTO tutor (firstName, lastName, email, password, birthdate, phone, major_id, major, gpa, about, available, offering, price) VALUES ('".$firstname."', '".$lastname."', '".$email."', '".$password."', '".$birthdate."', '".$phone."', '".$major_id."', '".$major."', '".$gpa."', '".$about."' , '".$available."' , '".$offering."', '".$price."', '".$this->db->lastInsertId()."')";
+                    
+                    $query1 = $this->db->prepare($sql);
+                    try {
+                        if ($query1->execute()) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } catch(PDOException $e) {
+                        echo $e->getMessage();
+                    }
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
         
         else if ($target == "booking") {
             $tutor_id = $parameters[":tutor_id"];
@@ -169,7 +171,7 @@ class Dao
         }
         
         else if ($target == "allTutors") {
-            $sql = "SELECT tutor_id, firstName, lastName, email, birthdate, phone, major, gpa, about, available, offering, price FROM tutor";
+            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE u.upload_id = t.upload_id";
             $query = $this->db->prepare($sql);
             $query->execute();
             return $query->fetchAll();
@@ -193,7 +195,7 @@ class Dao
 
         else if ($target == "tutorInfo") {
             $tutor_id = $parameters[":tutor_id"];
-            $sql = "SELECT firstName, lastName, email, birthdate, phone, major, gpa, about, available, offering, price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            $sql = "SELECT t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE t.tutor_id = '".$tutor_id."' AND u.upload_id = t.upload_id";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
@@ -208,7 +210,7 @@ class Dao
         
         else if ($target == "tutorPage") {
             $tutor_id = $parameters[":tutor_id"];
-            $sql = "SELECT tutor_id, firstName, lastName, email, major, about, available, offering, price FROM tutor WHERE tutor_id = '".$tutor_id."' ";
+            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.major_id, t.major, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE t.tutor_id = '".$tutor_id."' AND u.upload_id = t.upload_id";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
@@ -236,6 +238,13 @@ class Dao
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
+        }
+        
+        else if ($target == "majors") {
+            $sql = "SELECT * FROM major";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
         }
     }
     
@@ -328,7 +337,7 @@ class Dao
     /**********************
     ** DELETE OPERATIONS **
     **********************/
-    public function delete ($parameters, $target)
+    public function delete($parameters, $target)
     {
        if($target == "student") {
             $sql = "DELETE FROM student WHERE (student_id) = (:student_id)";
@@ -372,4 +381,118 @@ class Dao
             }
         }
     }
+    
+    
+    /**********************
+    ** SEARCH OPERATIONS **
+    **********************/
+    public function search($parameters, $target) 
+    {
+        //sort high-to-low
+        if ($target == "HighToLowTutors") {
+            if (isset($parameters[":filtertype"])) {
+                $filtering = $parameters[":filtertype"];
+                
+                if ($filtering == "both") {
+                    $major_id = $parameters[":filterinput1"];
+                    $classcode = $parameters[":filterinput2"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
+                }
+                else if ($filtering == "major_id") {
+                    $major_id = $parameters[":filterinput1"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') ORDER BY cast(t.price as SIGNED) DESC";
+                }
+                else ($filtering == "classcode") {
+                    $classcode = $parameters[":filterinput1"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
+                }
+            }
+            else {
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE u.upload_id = t.upload_id ORDER BY cast(t.price as SIGNED) DESC";
+            }
+            
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
+        //sort low-to-high
+        else if ($target == "LowToHighTutors") {
+            if (isset($parameters[":filtertype"])) {
+                $filtering = $parameters[":filtertype"];
+                
+                if ($filtering == "both") {
+                    $major_id = $parameters[":filterinput1"];
+                    $classcode = $parameters[":filterinput2"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) ASC";
+                }
+                else if ($filtering == "major_id") {
+                    $major_id = $parameters[":filterinput1"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') ORDER BY cast(t.price as SIGNED) ASC";
+                }
+                else ($filtering == "classcode") {
+                    $classcode = $parameters[":filterinput1"];
+                    
+                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
+                }
+            }
+            else {
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE u.upload_id = t.upload_id ORDER BY cast(t.price as SIGNED) ASC";
+            }
+            
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
+        //filter by major and class
+        else if ($target == "FilterBothTutors") {
+            $major_id = $parameters[":filterinput1"];
+            $classcode = $parameters[":filterinput2"];
+                    
+            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%')";
+            
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
+        //filter by major
+        else if ($target == "FilterMajorTutors") {
+            $major_id = $parameters[":filterinput1"];
+                    
+            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."')";
+            
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+        
+        //filter by class
+        else if ($target == "FilterClassTutors") {
+            $classcode = $parameters[":filterinput1"];
+                    
+            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%')";
+            
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

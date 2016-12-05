@@ -1,36 +1,50 @@
 <div class="container" style="width:80%;">
             
-    <div class="row" style=" margin-top:4%; margin-bottom:4%;">
+    <div class="row" style="margin-top:4%; margin-bottom:4%;">
 
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
 
             <div class="row" style="margin-top: 8.5%; margin-right: 0.5%;">
 
-                <div class="panel-heading clearfix center" style="background:#d0d0d0">
+                <div class="panel-heading clearfix center" style="background:#d0d0d0; border-radius: 4px 4px 0 0;">
 
                     <span class="panel-title"><b>Advanced Search</b></span>
 
                 </div>
 
-                <div class="panel-body" style="padding: 15px 20px; background-color:#f7f7f7;">
+                <div class="panel-body" style="border-radius: 0 0 4px 4px; padding: 15px 20px; background-color:#f7f7f7;">
 
                     <div class="center">
 
                         <h5 style="font-size:14px">Filter by Major:</h5>
 
-                        <form action="<?php echo URL; ?>search/filter" method="GET" class="nav-form">
+                        <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form">
 
-                            <select name='filterby' class="filter-select" onchange='' id="filter_menu" style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;">
+                            <select name="major_id" onchange="this.form.submit()" id="major" style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;">
 
-                                <option value="all">All Majors</option>
+<!--
+                                <option value="">All Majors</option>
                                 <option value="computer-science">Computer Science</option>
                                 <option value="engineering">Engineering</option>
                                 <option value="biology">Biology</option>
 
                             </select>
-<!--
-                            <noscript><input type='submit' name='submit_filter_major' value="Submit" id="searchButton" /></noscript>
 -->
+                                <option value="">All Majors</option>
+                                <?php
+                                    foreach ($majors as $major) {
+                                        if (isset($major->mName)) {
+                                            echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8') . "</option>";
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        
+                            <script>
+                                document.getElementById("major").value = <?php echo htmlspecialchars($_SESSION['major_id']); ?>;
+                            </script>
+
+                            <noscript><input type="submit" name="major_id" value="Submit" id="searchButton"></noscript>
 
                         </form>
 
@@ -42,57 +56,59 @@
 
                         <h5 style="font-size:14px">Filter by Class Code:</h5>
 
-                        <form class="form-inline" action="<?php echo URL; ?>search/filter" method="GET">
+                        <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
 
                             <div class="form-group float-left">
 
-                                <input class="form-control" type="text" name="class" size="13" value="" placeholder="class code" required/>
+                                <input class="form-control" type="text" name="classcode" size="13" value="<?php if(isset($_SESSION['classcode'])) echo htmlspecialchars($_SESSION['classcode']); ?>" placeholder="class code" required>
 
                             </div>
-
+                            
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); else if(isset($_SESSION['major_id'])) echo htmlspecialchars($_SESSION['major_id']); ?>">
 
                             <div class="form-group float-left">   
-                                <input type="submit" class="btn btn-info" name="submit_filter_class" value="Submit">
+                                <input type="submit" class="btn btn-info" name="classcode" value="Submit">
 
                             </div>
 
                         </form>
 
                     </div>
-
+                    
+<!--
                     <br><br>
 
                     <div class="center">
 
                         <h5 style="font-size:14px">Filter by Price Range:</h5>
 
-                        <form class="form-inline" action="<?php echo URL; ?>search/filter" method="GET">
+                        <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
 
                             <div class="form-group float-left">
 
-                                <input class="form-control" type="text" name="minprice" size="3" value="" placeholder="Min Price" required/>
+                                <input class="form-control" type="text" name="minprice" size="3" value="" placeholder="Min Price" required>
 
                             </div>
 
                             <div class="form-group float-left">   
-                                <input class="form-control" type="text" name="maxprice" size="3" value="" placeholder="Max Price" required/>
+                                <input class="form-control" type="text" name="maxprice" size="3" value="" placeholder="Max Price" required>
 
                             </div>
 
                             <div class="form-group float-left">   
-                                <input type="submit" class="btn btn-info" name="submit_filter_price_product" value="Submit">
+                                <input type="submit" class="btn btn-info" name="filter_price" value="Submit">
 
                             </div>
 
                         </form>
 
                     </div>
-
+-->
                     <br><br><br>
 
                     <div class="center">
 
-                        <form action="<?php echo URL; ?>search/filter" method="GET">
+                        <form action="<?php echo URL; ?>search/advanced" method="GET">
 
                             <input type="submit" class="btn btn-info " name="reset_filter" value="Reset All Filters">
 
@@ -112,26 +128,36 @@
 
             <div class="row" style="margin-top: 2.6%; margin-left: 0.5%;">
 
-                <div class="panel-heading clearfix" style="background:#d0d0d0">
+                <div class="panel-heading clearfix" style="background:#d0d0d0; border-radius: 4px 4px 0 0;">
 
-                    <span class="panel-title pull-left"><b>Showing 1-6 of <?php echo count($tutors) ?> tutors that meet your criteria.</b></span>
+                    <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors that meet your criteria.
+                        <?php 
+                            if(isset($_GET['price-low-high'])) 
+                                echo " > High to Low"; 
+                            else if(isset($_GET['rice-high-low'])) 
+                                echo " > Low to High"; 
+                        ?> </b></span>
 
                     <div>
 
-                        <form action="<?php echo URL; ?>search/sort" method="GET" class="nav-form pull-right">
+                        <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form pull-right">
 
                             <span class='panel-title pull-left'><b>Sort by &nbsp</b></span>
 
-                            <select name='sortby' class="sort-select" onchange='' id="sort_menu">
+                            <select name="sortby" class="sort-select" onchange="this.form.submit()" id="sort_menu">
 
-                                <option value="rating">rating</option>
+                                <option value="">default</option>
                                 <option value="price-low-high">price low to high</option>
                                 <option value="price-high-low">price high to low</option>
 
                             </select>
-<!--
-                            <noscript><input type='submit' name='submit_sort' value="Submit" id="searchButton" /></noscript>
--->
+                            
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); else if(isset($_SESSION['major_id'])) echo htmlspecialchars($_SESSION['major_id']); ?>">
+                            
+                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); else if(isset($_SESSION['classcode'])) echo htmlspecialchars($_SESSION['classcode']); ?>">
+
+                            <noscript><input type="submit" name="sortby" value="Submit" id="searchButton"></noscript>
+
 
                         </form>
 
@@ -139,18 +165,23 @@
 
                 </div>
 
-                <div class="panel-body" style="padding: 15px 30px; background-color:#f7f7f7;">
+                <div class="panel-body" style="border-radius: 0 0 4px 4px; padding: 15px 30px; background-color:#f7f7f7;">
 
                     <div class="row center">
 
                     <?php foreach ($tutors as $tutor) { ?>
                         
-                        <div class="col-sm-12" style="border:5px solid #DEDEDE; padding: 15px 10px; margin-top: 15px;">
+                        <div class="col-sm-12" style="border-radius: 5px; border: 5px solid #DEDEDE; padding: 15px 10px; margin-top: 15px;">
 
                             <div class="col-sm-3 col-lg-2 panel-body" style="float:left">
 
-                                <a href="<?php echo URL. 'tutor/viewtutor/' . htmlspecialchars($tutor->tutor_id, ENT_QUOTES, 'UTF-8'); ?>" >
-                                    <img src="<?php echo URL . '/img/demo-image.png' ?>">
+                                <a href="<?php echo URL. 'tutor/viewtutor/' . htmlspecialchars($tutor->tutor_id, ENT_QUOTES, 'UTF-8'); ?>">
+                                    
+                                    <img <?php 
+                                            if (isset($tutor->photo) && $tutor->photo != "")
+                                                echo 'src="data:image/jpeg;base64, '.base64_encode($tutor->photo).'" height="100" width="100"';
+                                            else 
+                                                echo 'src="<?php echo URL . '/img/demo-image.png' ?>"'; ?> class="img-tutor">
                                 </a>
 
                             </div>
