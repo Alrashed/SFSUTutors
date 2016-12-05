@@ -161,6 +161,7 @@ body {
     border-radius: 5px;
     height: 100px;
     width: 100px;
+    padding: 0;
 }
 .img-tutor:hover  {
     box-shadow: 1px 1px 10px grey;

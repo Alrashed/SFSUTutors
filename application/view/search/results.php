@@ -20,7 +20,7 @@
 
                         <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form">
 
-                            <select name="major_id" onchange="this.form.submit()" id="major" style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;">
+                            <select name="major_id" onchange='this.form.submit()' id="major" style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;">
 
 <!--
                                 <option value="">All Majors</option>
@@ -144,7 +144,7 @@
 
                             <span class='panel-title pull-left'><b>Sort by &nbsp</b></span>
 
-                            <select name="sortby" class="sort-select" onchange="this.form.submit()" id="sort_menu">
+                            <select name="sortby" class="sort-select" onchange='this.form.submit()' id="sort_menu">
 
                                 <option value="">default</option>
                                 <option value="price-low-high">price low to high</option>
@@ -181,7 +181,7 @@
                                             if (isset($tutor->photo) && $tutor->photo != "")
                                                 echo 'src="data:image/jpeg;base64, '.base64_encode($tutor->photo).'" height="100" width="100"';
                                             else 
-                                                echo 'src="<?php echo URL . '/img/demo-image.png' ?>"'; ?> class="img-tutor">
+                                                echo 'src="/img/demo-image.png"'; ?> class="img-tutor">
                                 </a>
 
                             </div>
