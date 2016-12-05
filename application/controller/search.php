@@ -17,6 +17,7 @@ class Search extends Controller
     public function advanced() 
     {
         $majors = $this->model->getAllMajors();
+        $tutors = $this->model->getAllTutors();
 //        $classcode = $_SESSION['classcode'];
 //        $major_id = $_SESSION['major_id'];
         

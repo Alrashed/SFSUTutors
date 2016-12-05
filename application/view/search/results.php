@@ -130,7 +130,7 @@
 
                 <div class="panel-heading clearfix" style="background:#d0d0d0; border-radius: 4px 4px 0 0;">
 
-                    <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors that meet your criteria.
+                    <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors that meet your criteria. 
                         <?php 
                             if(isset($_GET['price-low-high'])) 
                                 echo " > High to Low"; 
