@@ -6,8 +6,8 @@ class Search extends Controller
     {
         $majors = $this->model->getAllMajors();
         $tutors = $this->model->getAllTutors();
-        $_SESSION['classcode'] = "";
-        $_SESSION['major_id'] = "";
+//        $_SESSION['classcode'] = "";
+//        $_SESSION['major_id'] = "";
 	    
         require APP . 'view/_templates/header.php';
         require APP . 'view/search/results.php';
@@ -18,18 +18,9 @@ class Search extends Controller
     {
         $majors = $this->model->getAllMajors();
         $tutors = $this->model->getAllTutors();
-        $_SESSION['classcode'] = "";
-        $_SESSION['major_id'] = "";
 //        $classcode = $_SESSION['classcode'];
 //        $major_id = $_SESSION['major_id'];
-        
-        if (isset($_GET["major_id"])) {
-            $_GET["major_id"] = $_SESSION['major_id'];
-        }
-        
-        if (isset($_GET["classcode"])) {
-            $_GET["classcode"] = $_SESSION['classcode'];
-        }
+
         
         if (isset($_GET["sortby"])) {
             $sortby = $_GET["sortby"];

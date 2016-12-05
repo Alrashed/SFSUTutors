@@ -18,33 +18,30 @@
 
                         <h5 style="font-size:14px">Filter by Major:</h5>
 
-                        <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form">
+                        <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form form-inline">
+                            
+                            <div class="form-group float-left">
 
-                            <select name="major_id" onchange='this.form.submit()' id="major" style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;">
+                                <select name="major_id" id="major" style="width: 127px !important; min-width: 100px; max-width: 200px; height: 35px;">
 
-<!--
-                                <option value="">All Majors</option>
-                                <option value="computer-science">Computer Science</option>
-                                <option value="engineering">Engineering</option>
-                                <option value="biology">Biology</option>
-
-                            </select>
--->
-                                <option value="">All Majors</option>
-                                <?php
-                                    foreach ($majors as $major) {
-                                        if (isset($major->mName)) {
-                                            echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8') . "</option>";
+                                    <option value="">All Majors</option>
+                                    <?php
+                                        foreach ($majors as $major) {
+                                            if (isset($major->mName)) {
+                                                echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8') . "</option>";
+                                            }
                                         }
-                                    }
-                                ?>
-                            </select>
-                        
-                            <script>
-                                document.getElementById("major").value = <?php echo htmlspecialchars($_SESSION['major_id']); ?>;
-                            </script>
+                                    ?>
+                                </select>
+                                
+                            </div>
+                            
+                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
 
-                            <noscript><input type="submit" name="major_id" value="Submit" id="searchButton"></noscript>
+                            <div class="form-group float-left">   
+                                <input type="submit" class="btn btn-info" name="major_id" value="Submit">
+
+                            </div>
 
                         </form>
 
@@ -60,11 +57,11 @@
 
                             <div class="form-group float-left">
 
-                                <input class="form-control" type="text" name="classcode" size="13" value="<?php if(isset($_SESSION['classcode'])) echo htmlspecialchars($_SESSION['classcode']); ?>" placeholder="class code" required>
+                                <input class="form-control" type="text" name="classcode" size="13" value="" placeholder="class code" required>
 
                             </div>
                             
-                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); else if(isset($_SESSION['major_id'])) echo htmlspecialchars($_SESSION['major_id']); ?>">
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
 
                             <div class="form-group float-left">   
                                 <input type="submit" class="btn btn-info" name="classcode" value="Submit">
@@ -132,10 +129,13 @@
 
                     <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors that meet your criteria. 
                         <?php 
-                            if(isset($_GET['price-low-high'])) 
-                                echo " > High to Low"; 
-                            else if(isset($_GET['rice-high-low'])) 
-                                echo " > Low to High"; 
+                            if(isset($_GET['sortby'])) {
+                                if($_GET['sortby'] == "price-high-low")
+                                    echo " > High to Low"; 
+                            } else if(isset($_GET['sortby'])) {
+                                if($_GET['sortby'] == "price-low-high")
+                                    echo " > Low to High"; 
+                            }
                         ?> </b></span>
 
                     <div>
@@ -152,9 +152,9 @@
 
                             </select>
                             
-                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); else if(isset($_SESSION['major_id'])) echo htmlspecialchars($_SESSION['major_id']); ?>">
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
                             
-                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); else if(isset($_SESSION['classcode'])) echo htmlspecialchars($_SESSION['classcode']); ?>">
+                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
 
                             <noscript><input type="submit" name="sortby" value="Submit" id="searchButton"></noscript>
 
