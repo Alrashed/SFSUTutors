@@ -15,7 +15,7 @@
                                     if (isset($tutor->photo) && $tutor->photo != "")
                                         echo 'src="data:image/jpeg;base64, '.base64_encode($tutor->photo).'" height="100" width="100"';
                                     else 
-                                        echo 'src="<?php echo URL . '/img/demo-image.png' ?>"'; ?> class="img-tutor">
+                                        echo 'src="/img/demo-image.png"'; ?> class="img-tutor">
                         </a>
 
                     </div>

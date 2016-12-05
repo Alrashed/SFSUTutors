@@ -17,78 +17,93 @@ class Search extends Controller
     public function advanced() 
     {
         $majors = $this->model->getAllMajors();
-        $classcode = $_SESSION['classcode'];
-        $major_id = $_SESSION['major_id'];
-        $sortby = $_GET["sortby"];
-        //sort by high price
-        if ($sortby == "high-to-low") {
-            $sorttype = "high-to-low";
-            
-            if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
-                $filtertype = "both";
-                $filterinput1 = ($_GET["major_id"]);
-                $filterinput2 = ($_GET["classcode"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2);
-            }
-            else if (isset($_GET["major_id"]) && ($_GET["major_id"]!="")) {
-                $filtertype = "major_id";
-                $filterinput1 = ($_GET["major_id"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
-            }
-            else if (isset($_GET["classcode"]) && ($_GET["classcode"]!="")) {
-                $filtertype = "classcode";
-                $filterinput1 = ($_GET["classcode"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
-            }
-            else {
-                $filtertype = "";
-                $filterinput1 = "";
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
-            }
+//        $classcode = $_SESSION['classcode'];
+//        $major_id = $_SESSION['major_id'];
+        
+        if (isset($_GET["major_id"])) {
+            $_GET["major_id"] = $_SESSION['major_id'];
         }
         
-        //sort by low price
-        else if ($sortby == "low-to-high") {
-            $sorttype = "low-to-high";
+        if (isset($_GET["classcode"])) {
+            $_GET["classcode"] = $_SESSION['classcode'];
+        }
+        
+        if (isset($_GET["sortby"])) {
+            $sortby = $_GET["sortby"];
             
-            if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
-                $filtertype = "both";
-                $filterinput1 = ($_GET["major_id"]);
-                $filterinput2 = ($_GET["classcode"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2);
+            //sort by high price
+            if ($sortby == "high-to-low") {
+                $sorttype = "high-to-low";
+
+                if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
+                    $filtertype = "both";
+                    $filterinput1 = ($_GET["major_id"]);
+                    $filterinput2 = ($_GET["classcode"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2);
+                }
+                else if (isset($_GET["major_id"]) && ($_GET["major_id"]!="")) {
+                    $filtertype = "major_id";
+                    $filterinput1 = ($_GET["major_id"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
+                else if (isset($_GET["classcode"]) && ($_GET["classcode"]!="")) {
+                    $filtertype = "classcode";
+                    $filterinput1 = ($_GET["classcode"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
+                else {
+                    $filtertype = "";
+                    $filterinput1 = "";
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
             }
-            else if (isset($_GET["major_id"]) && ($_GET["major_id"]!="")) {
-                $filtertype = "major_id";
-                $filterinput1 = ($_GET["major_id"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
-            }
-            else if (isset($_GET["classcode"]) && ($_GET["classcode"]!="")) {
-                $filtertype = "classcode";
-                $filterinput1 = ($_GET["classcode"]);
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
-            }
-            else {
-                $filtertype = "";
-                $filterinput1 = "";
-                
-                $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+
+            //sort by low price
+            else if ($sortby == "low-to-high") {
+                $sorttype = "low-to-high";
+
+                if (($_GET["major_id"]!="") && ($_GET["classcode"]!="")) {
+                    $filtertype = "both";
+                    $filterinput1 = ($_GET["major_id"]);
+                    $filterinput2 = ($_GET["classcode"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2);
+                }
+                else if (isset($_GET["major_id"]) && ($_GET["major_id"]!="")) {
+                    $filtertype = "major_id";
+                    $filterinput1 = ($_GET["major_id"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
+                else if (isset($_GET["classcode"]) && ($_GET["classcode"]!="")) {
+                    $filtertype = "classcode";
+                    $filterinput1 = ($_GET["classcode"]);
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
+                else {
+                    $filtertype = "";
+                    $filterinput1 = "";
+
+                    $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
+                }
             }
         }
         
         //filter by major
         else if (isset($_GET["major_id"])) {
             
-            if ($_GET["classcode"]!="") {
-                $filtertype = "both";
+            if (isset($_GET["classcode"])) {
                 
-                $tutors = $this->model->getFilteredTutors($filtertype, $_GET["major_id"], $_GET["classcode"]);
+                if ($_GET["classcode"]!="") {
+                    $filtertype = "both";
+
+                    $tutors = $this->model->getFilteredTutors($filtertype, $_GET["major_id"], $_GET["classcode"]);
+                }
             }
             else {
                 $filtertype = "major_id";
@@ -99,10 +114,13 @@ class Search extends Controller
         //filter by class
         else if (isset($_GET["classcode"])) {
             
-            if ($_GET["major_id"]!="") {
-                $filtertype = "both";
+            if (isset($_GET["major_id"])) {
                 
-                $tutors = $this->model->getFilteredTutors($filtertype, $_GET["major_id"], $_GET["classcode"]);
+                if ($_GET["major_id"]!="") {
+                    $filtertype = "both";
+
+                    $tutors = $this->model->getFilteredTutors($filtertype, $_GET["major_id"], $_GET["classcode"]);
+                }
             }
             else {
                 $filtertype = "classcode";
