@@ -20,6 +20,8 @@
 
                         <form action="<?php echo URL; ?>search/advanced" method="GET" class="nav-form form-inline">
                             
+                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
+                            
                             <div class="form-group float-left">
 
                                 <select name="major_id" id="major" style="width: 127px !important; min-width: 100px; max-width: 200px; height: 35px;">
@@ -35,11 +37,9 @@
                                 </select>
                                 
                             </div>
-                            
-                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
 
                             <div class="form-group float-left">   
-                                <input type="submit" class="btn btn-info" name="major_id" value="Submit">
+                                <input type="submit" class="btn btn-info" name="submit_major_id" value="Submit">
 
                             </div>
 
@@ -55,16 +55,16 @@
 
                         <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
 
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
+                            
                             <div class="form-group float-left">
 
                                 <input class="form-control" type="text" name="classcode" size="13" value="" placeholder="class code" required>
 
                             </div>
-                            
-                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
 
                             <div class="form-group float-left">   
-                                <input type="submit" class="btn btn-info" name="classcode" value="Submit">
+                                <input type="submit" class="btn btn-info" name="submit_classcode" value="Submit">
 
                             </div>
 
@@ -144,6 +144,10 @@
 
                             <span class='panel-title pull-left'><b>Sort by &nbsp</b></span>
 
+                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
+                            
+                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
+                            
                             <select name="sortby" class="sort-select" onchange='this.form.submit()' id="sort_menu">
 
                                 <option value="">default</option>
@@ -152,11 +156,7 @@
 
                             </select>
                             
-                            <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
-                            
-                            <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
-
-                            <noscript><input type="submit" name="sortby" value="Submit" id="searchButton"></noscript>
+                            <noscript><input type="submit" name="submit_sortby" value="Submit" id="searchButton"></noscript>
 
 
                         </form>

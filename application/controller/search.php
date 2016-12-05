@@ -22,7 +22,7 @@ class Search extends Controller
 //        $major_id = $_SESSION['major_id'];
 
         
-        if (isset($_GET["sortby"])) {
+        if (isset($_GET["submit_sortby"])) {
             $sortby = $_GET["sortby"];
             
             //sort by high price
@@ -89,7 +89,7 @@ class Search extends Controller
         }
         
         //filter by major
-        else if (isset($_GET["major_id"])) {
+        else if (isset($_GET["submit_major_id"])) {
             
             if (isset($_GET["classcode"])) {
                 
@@ -106,7 +106,7 @@ class Search extends Controller
         }
         
         //filter by class
-        else if (isset($_GET["classcode"])) {
+        else if (isset($_GET["submit_classcode"])) {
             
             if (isset($_GET["major_id"])) {
                 
