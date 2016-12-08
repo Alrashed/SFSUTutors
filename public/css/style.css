@@ -196,10 +196,10 @@ body {
 .reviews-list li:last-child {
     border-bottom: 1px solid #DEDEDE;
 }
-h5.account-overview {
+.account-overview h5 {
     font-size: 16px;
 }
-i.account-overview {
+.account-overview i {
     font-style: normal;
     font-weight: bold;
 }

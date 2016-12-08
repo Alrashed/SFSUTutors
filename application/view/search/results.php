@@ -22,6 +22,8 @@
                             
                             <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
                             
+                            <input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
+                            
                             <div class="form-group float-left">
 
                                 <select name="major_id" id="major" style="width: 127px !important; min-width: 100px; max-width: 200px; height: 35px;">
@@ -56,6 +58,8 @@
                         <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
 
                             <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
+                            
+                            <input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
                             
                             <div class="form-group float-left">
 
@@ -271,3 +275,9 @@
     </div>
 
 </div>
+
+<input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
+                            
+<input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
+
+<input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">

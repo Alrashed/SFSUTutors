@@ -238,7 +238,7 @@ class Model
         return $this->dao->get($parameters, "majors");
     }
     
-    public function getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2="") 
+    public function getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2) 
     {
         if ($filtertype == "both") {
             $parameters = [
@@ -310,7 +310,7 @@ class Model
             return $this->dao->search($parameters, "LowToHighTutors");*/
     }
     
-    public function getFilteredTutors($filtertype, $filterinput1, $filterinput2="") 
+    public function getFilteredTutors($filtertype, $filterinput1, $filterinput2) 
     {
         if ($filtertype == "both") {
             $parameters = [
