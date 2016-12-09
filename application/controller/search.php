@@ -137,6 +137,11 @@ class Search extends Controller
                     $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1);
                 }*/
             }
+            
+            else if ($sortby == "") {
+                
+                $tutors = $this->model->getFilteredTutors($_GET["major_id"], $_GET["classcode"]);
+            }
         }
                 
         //reset filters
