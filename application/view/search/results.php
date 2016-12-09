@@ -27,15 +27,24 @@
                             <div class="form-group float-left">
 
                                 <select name="major_id" id="major" style="width: 127px !important; min-width: 100px; max-width: 200px; height: 35px;">
-
+<!--
                                     <option value="">All Majors</option>
-                                    <?php
+                                    <//?php
                                         foreach ($majors as $major) {
                                             if (isset($major->mName)) {
                                                 echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8') . "</option>";
                                             }
                                         }
                                     ?>
+-->
+                                    <option value="">All Majors</option>
+                                    
+                                    <?php foreach ($majors as $major) { ?>
+                                    
+                                    <option value= "<?php if (isset($major->mName)) echo htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8'); ?>" <?php if(isset($_GET['major_id']) && ($_GET['major_id'] == ($major->major_id))) echo 'selected="selected"'; ?>> <?php if (isset($major->mName)) echo htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8'); ?></option>
+                                    
+                                    <?php } ?>
+                                    
                                 </select>
                                 
                             </div>
@@ -63,7 +72,7 @@
                             
                             <div class="form-group float-left">
 
-                                <input class="form-control" type="text" name="classcode" size="13" value="" placeholder="class code" required>
+                                <input class="form-control" type="text" name="classcode" size="13" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>" placeholder="class code" required>
 
                             </div>
 
@@ -140,7 +149,17 @@
                                 if($_GET['sortby'] == "price-low-high")
                                     echo " > Low to High"; 
                             }
-                        ?> </b></span>
+                        ?>
+                        <?php 
+                            if(isset($_GET['major_id']))) { 
+                                echo " > "; 
+                                echo htmlspecialchars($_GET['major_id']); 
+                            } 
+                            if(isset($_GET['classcode'])&&($_GET['classcode']!="")) { 
+                                echo " > "; 
+                                echo htmlspecialchars($_GET['classcode']); 
+                            }
+                        ?></b></span>
 
                     <div>
 
@@ -155,8 +174,10 @@
                             <select name="sortby" class="sort-select" onchange='this.form.submit()' id="sort_menu">
 
                                 <option value="">default</option>
-                                <option value="price-low-high">price low to high</option>
-                                <option value="price-high-low">price high to low</option>
+                                
+                                <option <?php if (isset($_GET['sortby']) && $_GET['sortby'] == "price-low-high") echo "selected='selected'"; ?> value="price-low-high">price low to high</option>
+                                
+                                <option <?php if (isset($_GET['sortby']) && $_GET['sortby'] == "price-high-low") echo "selected='selected'"; ?> value="price-high-low">price high to low</option>
 
                             </select>
                             

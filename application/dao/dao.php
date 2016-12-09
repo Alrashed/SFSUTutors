@@ -389,8 +389,8 @@ class Dao
     public function search($parameters, $target) 
     {
         //sort high-to-low
-        if ($target == "HighToLowTutors") {
-            if (isset($parameters[":filtertype"])) {
+        if ($target == "highToLowTutors") {
+            if (isset($parameters[":filtertype"]) && ($parameters[":filtertype"]!="")) {
                 $filtering = $parameters[":filtertype"];
                 
                 if ($filtering == "both") {
@@ -420,8 +420,8 @@ class Dao
         }
         
         //sort low-to-high
-        else if ($target == "LowToHighTutors") {
-            if (isset($parameters[":filtertype"])) {
+        else if ($target == "lowToHighTutors") {
+            if (isset($parameters[":filtertype"]) && ($parameters[":filtertype"]!="")) {
                 $filtering = $parameters[":filtertype"];
                 
                 if ($filtering == "both") {
@@ -451,7 +451,7 @@ class Dao
         }
         
         //filter by major and class
-        else if ($target == "FilterBothTutors") {
+        else if ($target == "filterBothTutors") {
             $major_id = $parameters[":filterinput1"];
             $classcode = $parameters[":filterinput2"];
                     
@@ -463,7 +463,7 @@ class Dao
         }
         
         //filter by major
-        else if ($target == "FilterMajorTutors") {
+        else if ($target == "filterMajorTutors") {
             $major_id = $parameters[":filterinput1"];
                     
             $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."')";
@@ -474,7 +474,7 @@ class Dao
         }
         
         //filter by class
-        else if ($target == "FilterClassTutors") {
+        else if ($target == "filterClassTutors") {
             $classcode = $parameters[":filterinput1"];
                     
             $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%')";

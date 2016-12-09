@@ -247,10 +247,10 @@ class Model
                 ":filterinput2" => $filterinput2,
             ];
             if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "HighToLowTutors");
+                return $this->dao->search($parameters, "highToLowTutors");
             }
             else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "LowToHighTutors");
+                return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
         else if ($filtertype == "major_id") {
@@ -259,10 +259,10 @@ class Model
                 ":filterinput1" => $filterinput1,
             ];
             if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "HighToLowTutors");
+                return $this->dao->search($parameters, "highToLowTutors");
             }
             else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "LowToHighTutors");
+                return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
         else if ($filtertype == "classcode") {
@@ -271,20 +271,20 @@ class Model
                 ":filterinput1" => $filterinput1,
             ];
             if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "HighToLowTutors");
+                return $this->dao->search($parameters, "highToLowTutors");
             }
             else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "LowToHighTutors");
+                return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
         else if ($filtertype == "") {
             $parameters = [
             ];
             if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "HighToLowTutors");
+                return $this->dao->search($parameters, "highToLowTutors");
             }
             else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "LowToHighTutors");
+                return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
 /*        if (($filterinput1 != "") && ($filterinput2 != "")) {
@@ -318,21 +318,21 @@ class Model
                 ":filterinput1" => $filterinput1,
                 ":filterinput2" => $filterinput2,
             ];
-            return $this->dao->search($parameters, "FilterBothTutors");
+            return $this->dao->search($parameters, "filterBothTutors");
         }
         else if ($filtertype == "major_id") {
             $parameters = [
                 ":filtertype" => $filtertype,
                 ":filterinput1" => $filterinput1,
             ];
-            return $this->dao->search($parameters, "FilterMajorTutors");
+            return $this->dao->search($parameters, "filterMajorTutors");
         }
         else if ($filtertype == "classcode") {
             $parameters = [
                 ":filtertype" => $filtertype,
                 ":filterinput1" => $filterinput1,
             ];
-            return $this->dao->search($parameters, "FilterClassTutors");
+            return $this->dao->search($parameters, "filterClassTutors");
         }
     }
 }

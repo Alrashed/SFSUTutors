@@ -17,13 +17,13 @@ class Search extends Controller
     public function advanced() 
     {
         $majors = $this->model->getAllMajors();
-        $tutors = $this->model->getAllTutors();
+//        $tutors = $this->model->getAllTutors();
 //        $classcode = $_SESSION['classcode'];
 //        $major_id = $_SESSION['major_id'];
 
         
         if (isset($_GET["submit_sortby"])) {
-            $sortby = $_GET["sortby"];
+            $sortby = ($_GET["sortby"]);
             
             //sort by high price
             if ($sortby == "high-to-low") {
