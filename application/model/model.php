@@ -244,10 +244,10 @@ class Model
             $parameters = [
                 ":classcode" => $classcode,
             ];
-            if ($sortby == "high-to-low") {
+            if ($sortby == "price-high-low") {
                 return $this->dao->search($parameters, "highToLowTutors");
             }
-            else if ($sortby == "low-to-high") {
+            else if ($sortby == "price-low-high") {
                 return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
@@ -256,10 +256,10 @@ class Model
                 ":major_id" => $major_id,
                 ":classcode" => $classcode,
             ];
-            if ($sortby == "high-to-low") {
+            if ($sortby == "price-high-low") {
                 return $this->dao->search($parameters, "highToLowTutors");
             }
-            else if ($sortby == "low-to-high") {
+            else if ($sortby == "price-low-high") {
                 return $this->dao->search($parameters, "lowToHighTutors");
             }
         }

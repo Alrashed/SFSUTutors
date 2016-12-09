@@ -136,11 +136,12 @@
                     <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors found 
                         <?php 
                             if(isset($_GET['sortby'])) {
-                                if($_GET['sortby'] == "price-high-low")
-                                    echo " > High to Low"; 
-                            } else {
-                                if($_GET['sortby'] == "price-low-high")
-                                    echo " > Low to High"; 
+                                if($_GET['sortby'] == "price-high-low") {
+                                    echo " > High to Low";
+                                }
+                                else if($_GET['sortby'] == "price-low-high") {
+                                    echo " > Low to High";
+                                }
                             }
                         ?>
                         <?php 
@@ -148,7 +149,7 @@
                                 echo " > major: ". htmlspecialchars($_GET['major_id']); 
                             } 
                             if(isset($_GET['classcode'])&&($_GET['classcode']!="")) {  
-                                echo " > class: ". htmlspecialchars($_GET['classcode']); 
+                                echo " > class code: ". htmlspecialchars($_GET['classcode']); 
                             }
                         ?></b></span>
 
