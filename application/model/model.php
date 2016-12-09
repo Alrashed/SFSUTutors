@@ -253,8 +253,8 @@ class Model
         }
         else {
             $parameters = [
-                ":major_id" => $major_id,
                 ":classcode" => $classcode,
+                ":major_id" => $major_id,
             ];
             if ($sortby == "price-high-low") {
                 return $this->dao->search($parameters, "highToLowTutors");
@@ -263,119 +263,22 @@ class Model
                 return $this->dao->search($parameters, "lowToHighTutors");
             }
         }
-        /*if ($filtertype == "both") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-                ":filterinput2" => $filterinput2,
-            ];
-            if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "highToLowTutors");
-            }
-            else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "lowToHighTutors");
-            }
-        }
-        else if ($filtertype == "major_id") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-            ];
-            if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "highToLowTutors");
-            }
-            else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "lowToHighTutors");
-            }
-        }
-        else if ($filtertype == "classcode") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-            ];
-            if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "highToLowTutors");
-            }
-            else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "lowToHighTutors");
-            }
-        }
-        else if ($filtertype == "") {
-            $parameters = [
-            ];
-            if ($sorttype == "high-to-low") {
-                return $this->dao->search($parameters, "highToLowTutors");
-            }
-            else if ($sorttype == "low-to-high") {
-                return $this->dao->search($parameters, "lowToHighTutors");
-            }
-        }*/
-/*        if (($filterinput1 != "") && ($filterinput2 != "")) {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-                ":filterinput2" => $filterinput2,
-            ];
-        }
-        else if (($filterinput1 != "") && ($filterinput2 == "")) {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-            ];
-        }
-        else if ($filterinput1 == "") {
-            $parameters = [
-            ];
-        }
-        if ($sorttype == "high-to-low")
-            return $this->dao->search($parameters, "HighToLowTutors");
-        else if ($sorttype == "low-to-high")
-            return $this->dao->search($parameters, "LowToHighTutors");*/
     }
     
     public function getFilteredTutors($major_id, $classcode) 
-    {
-        /*if ($filtertype == "both") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-                ":filterinput2" => $filterinput2,
-            ];
-            return $this->dao->search($parameters, "filterBothTutors");
-        }
-        else if ($filtertype == "major_id") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-            ];
-            return $this->dao->search($parameters, "filterMajorTutors");
-        }
-        else if ($filtertype == "classcode") {
-            $parameters = [
-                ":filtertype" => $filtertype,
-                ":filterinput1" => $filterinput1,
-            ];
-            return $this->dao->search($parameters, "filterClassTutors");
-        }*/
-        
+    {   
         if ($major_id == "") {
             $parameters = [
                 ":classcode" => $classcode,
             ];
-            return $this->dao->get($parameters, "filterClassTutors");
-        } 
-        /*else if ($classcode == "") {
-            $parameters = [
-                ":major_id" => $major_id,
-            ];
-            return $this->dao->get($parameters, "filterMajorTutors");
-        }*/
+            return $this->dao->search($parameters, "filterClassTutors");
+        }
         else {
             $parameters = [
                 ":classcode" => $classcode,
-                ":major_id" => $cmajor_id,
+                ":major_id" => $major_id,
             ];
-            return $this->dao->get($parameters, "filterBothTutors");
+            return $this->dao->search($parameters, "filterBothTutors");
         }
     }
 }
