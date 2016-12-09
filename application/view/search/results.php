@@ -26,7 +26,7 @@
                             
                             <div class="form-group float-left">
 
-                                <select name="major_id" id="major" style="width: 127px !important; min-width: 100px; max-width: 200px; height: 35px;">
+                                <select name="major_id" id="major"  style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;" onchange='this.form.submit()'>
 <!--
                                     <option value="">All Majors</option>
                                     <//?php
@@ -47,13 +47,15 @@
                                     
                                 </select>
                                 
+                                <noscript><input type="submit" name="submit_major_id" value="Submit" id="searchButton"></noscript>
+                                
                             </div>
-
+<!--
                             <div class="form-group float-left">   
                                 <input type="submit" class="btn btn-info" name="submit_major_id" value="Submit">
 
                             </div>
-
+-->
                         </form>
 
                     </div>
@@ -153,11 +155,11 @@
                         <?php 
                             if(isset($_GET['major_id'])) { 
                                 echo " > "; 
-                                echo htmlspecialchars($_GET['major_id']); 
+                                echo "major:". htmlspecialchars($_GET['major_id']); 
                             } 
                             if(isset($_GET['classcode'])&&($_GET['classcode']!="")) { 
                                 echo " > "; 
-                                echo htmlspecialchars($_GET['classcode']); 
+                                echo "class:". htmlspecialchars($_GET['classcode']); 
                             }
                         ?></b></span>
 

@@ -24,7 +24,7 @@ class Search extends Controller
         
         if (isset($_GET["submit_sortby"])) {
             $sortby = ($_GET["sortby"]);
-            
+            echo $sortby;
             //sort by high price
             if ($sortby == "high-to-low") {
                 $sorttype = "high-to-low";
@@ -33,6 +33,8 @@ class Search extends Controller
                     $filtertype = "both";
                     $filterinput1 = ($_GET["major_id"]);
                     $filterinput2 = ($_GET["classcode"]);
+                    echo $filterinput1;
+                    echo $filterinput2;
 
                     $tutors = $this->model->getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2);
                 }
