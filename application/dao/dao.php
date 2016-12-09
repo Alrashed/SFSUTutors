@@ -392,7 +392,7 @@ class Dao
         if ($target == "highToLowTutors") {
             $classcode = $parameters[":classcode"];
             
-            if (isset($parameters[":major_id"]) && ($parameters[":major_id"] != "")) {
+            if (isset($parameters[":major_id"])) {
                 $major_id = $parameters[":major_id"];
                 
                 $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
@@ -402,23 +402,15 @@ class Dao
             }
             
             $query = $this->db->prepare($sql);
-            try {
-                if ($query->execute()) {
-                    $result = $query->fetchAll();
-                    return $result;
-                } else {
-                    return false;
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
+            $query->execute();
+            return $query->fetchAll();
         }
         
         //sort low-to-high
         else if ($target == "lowToHighTutors") {
             $classcode = $parameters[":classcode"];
             
-            if (isset($parameters[":major_id"]) && ($parameters[":major_id"] != "")) {
+            if (isset($parameters[":major_id"])) {
                 $major_id = $parameters[":major_id"];
                 
                 $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%".$classcode."%') ORDER BY cast(t.price as SIGNED) ASC";
@@ -428,16 +420,8 @@ class Dao
             }
             
             $query = $this->db->prepare($sql);
-            try {
-                if ($query->execute()) {
-                    $result = $query->fetchAll();
-                    return $result;
-                } else {
-                    return false;
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
+            $query->execute();
+            return $query->fetchAll();
         }
         
         //filter by major and class
@@ -452,17 +436,6 @@ class Dao
             return $query->fetchAll();
         }
         
-        //filter by major
-        /*else if ($target == "filterMajorTutors") {
-            $major_id = $parameters[":major_id"];
-                    
-            $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."')";
-            
-            $query = $this->db->prepare($sql);
-            $query->execute();
-            return $query->fetchAll();
-        }*/
-        
         //filter by class
         else if ($target == "filterClassTutors") {
             $classcode = $parameters[":classcode"];
@@ -475,14 +448,3 @@ class Dao
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-

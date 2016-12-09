@@ -293,4 +293,4 @@
                             
 <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
 
-<!--<input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->
+<input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
