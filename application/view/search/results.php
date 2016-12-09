@@ -151,7 +151,7 @@
                             }
                         ?>
                         <?php 
-                            if(isset($_GET['major_id']))) { 
+                            if(isset($_GET['major_id'])) { 
                                 echo " > "; 
                                 echo htmlspecialchars($_GET['major_id']); 
                             } 
