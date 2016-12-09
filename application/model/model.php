@@ -364,12 +364,12 @@ class Model
             ];
             return $this->dao->get($parameters, "filterClassTutors");
         } 
-        else if ($classcode == "") {
+        /*else if ($classcode == "") {
             $parameters = [
                 ":major_id" => $major_id,
             ];
             return $this->dao->get($parameters, "filterMajorTutors");
-        }
+        }*/
         else {
             $parameters = [
                 ":classcode" => $classcode,
