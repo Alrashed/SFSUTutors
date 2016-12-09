@@ -390,70 +390,60 @@ class Dao
     {
         //sort high-to-low
         if ($target == "highToLowTutors") {
-            if (isset($parameters[":filtertype"]) && ($parameters[":filtertype"]!="")) {
-                $filtering = $parameters[":filtertype"];
+            $classcode = $parameters[":classcode"];
+            
+            if (isset($parameters[":major_id"])) {
+                $major_id = $parameters[":major_id"];
                 
-                if ($filtering == "both") {
-                    $major_id = $parameters[":filterinput1"];
-                    $classcode = $parameters[":filterinput2"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
-                }
-                else if ($filtering == "major_id") {
-                    $major_id = $parameters[":filterinput1"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') ORDER BY cast(t.price as SIGNED) DESC";
-                }
-                else if ($filtering == "classcode") {
-                    $classcode = $parameters[":filterinput1"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
-                }
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
             }
             else {
-                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE u.upload_id = t.upload_id ORDER BY cast(t.price as SIGNED) DESC";
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
             }
             
             $query = $this->db->prepare($sql);
-            $query->execute();
-            return $query->fetchAll();
+            try {
+                if ($query->execute()) {
+                    $result = $query->fetchAll();
+                    return $result;
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
         
         //sort low-to-high
         else if ($target == "lowToHighTutors") {
-            if (isset($parameters[":filtertype"]) && ($parameters[":filtertype"]!="")) {
-                $filtering = $parameters[":filtertype"];
+            $classcode = $parameters[":classcode"];
+            
+            if (isset($parameters[":major_id"])) {
+                $major_id = $parameters[":major_id"];
                 
-                if ($filtering == "both") {
-                    $major_id = $parameters[":filterinput1"];
-                    $classcode = $parameters[":filterinput2"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) ASC";
-                }
-                else if ($filtering == "major_id") {
-                    $major_id = $parameters[":filterinput1"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') ORDER BY cast(t.price as SIGNED) ASC";
-                }
-                else if ($filtering == "classcode") {
-                    $classcode = $parameters[":filterinput1"];
-                    
-                    $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) DESC";
-                }
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) ASC";
             }
             else {
-                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE u.upload_id = t.upload_id ORDER BY cast(t.price as SIGNED) ASC";
+                $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%') ORDER BY cast(t.price as SIGNED) ASC";
             }
             
             $query = $this->db->prepare($sql);
-            $query->execute();
-            return $query->fetchAll();
+            try {
+                if ($query->execute()) {
+                    $result = $query->fetchAll();
+                    return $result;
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
         
         //filter by major and class
         else if ($target == "filterBothTutors") {
-            $major_id = $parameters[":filterinput1"];
-            $classcode = $parameters[":filterinput2"];
+            $major_id = $parameters[":major_id"];
+            $classcode = $parameters[":classcode"];
                     
             $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."') AND (t.offering LIKE '%.".$classcode."%')";
             
@@ -464,7 +454,7 @@ class Dao
         
         //filter by major
         else if ($target == "filterMajorTutors") {
-            $major_id = $parameters[":filterinput1"];
+            $major_id = $parameters[":major_id"];
                     
             $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id AND t.major_id = '".$major_id."')";
             
@@ -475,7 +465,7 @@ class Dao
         
         //filter by class
         else if ($target == "filterClassTutors") {
-            $classcode = $parameters[":filterinput1"];
+            $classcode = $parameters[":classcode"];
                     
             $sql = "SELECT t.tutor_id, t.firstName, t.lastName, t.email, t.birthdate, t.phone, t.major_id, t.major, t.gpa, t.about, t.available, t.offering, t.price, u.photo FROM tutor t, upload u WHERE (u.upload_id = t.upload_id) AND (t.offering LIKE '%.".$classcode."%')";
             

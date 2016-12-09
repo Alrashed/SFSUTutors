@@ -22,21 +22,12 @@
                             
                             <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
                             
-                            <input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
+<!--                            <input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->
                             
                             <div class="form-group float-left">
 
                                 <select name="major_id" id="major"  style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;" onchange='this.form.submit()'>
-<!--
-                                    <option value="">All Majors</option>
-                                    <//?php
-                                        foreach ($majors as $major) {
-                                            if (isset($major->mName)) {
-                                                echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->mName, ENT_QUOTES, 'UTF-8') . "</option>";
-                                            }
-                                        }
-                                    ?>
--->
+
                                     <option value="">All Majors</option>
                                     
                                     <?php foreach ($majors as $major) { ?>
@@ -70,7 +61,7 @@
 
                             <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
                             
-                            <input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
+<!--                            <input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->
                             
                             <div class="form-group float-left">
 
@@ -142,24 +133,22 @@
 
                 <div class="panel-heading clearfix" style="background:#d0d0d0; border-radius: 4px 4px 0 0;">
 
-                    <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors that meet your criteria. 
+                    <span class="panel-title pull-left"><b><?php echo count($tutors) ?> tutors found 
                         <?php 
                             if(isset($_GET['sortby'])) {
                                 if($_GET['sortby'] == "price-high-low")
                                     echo " > High to Low"; 
-                            } else if(isset($_GET['sortby'])) {
+                            } else {
                                 if($_GET['sortby'] == "price-low-high")
                                     echo " > Low to High"; 
                             }
                         ?>
                         <?php 
-                            if(isset($_GET['major_id'])) { 
-                                echo " > "; 
-                                echo "major:". htmlspecialchars($_GET['major_id']); 
+                            if(isset($_GET['major_id'])&&($_GET['major_id']!="")) { 
+                                echo " > major: ". htmlspecialchars($_GET['major_id']); 
                             } 
-                            if(isset($_GET['classcode'])&&($_GET['classcode']!="")) { 
-                                echo " > "; 
-                                echo "class:". htmlspecialchars($_GET['classcode']); 
+                            if(isset($_GET['classcode'])&&($_GET['classcode']!="")) {  
+                                echo " > class: ". htmlspecialchars($_GET['classcode']); 
                             }
                         ?></b></span>
 
@@ -303,4 +292,4 @@
                             
 <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
 
-<input type="hidden" name="sortby" value="<?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">
+<!--<input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->

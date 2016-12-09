@@ -238,9 +238,32 @@ class Model
         return $this->dao->get($parameters, "majors");
     }
     
-    public function getSortedTutors($sorttype, $filtertype, $filterinput1, $filterinput2) 
+    public function getSortedTutors($sortby, $major_id, $classcode) 
     {
-        if ($filtertype == "both") {
+        if ($major_id == "") {
+            $parameters = [
+                ":classcode" => $classcode,
+            ];
+            if ($sortby == "high-to-low") {
+                return $this->dao->search($parameters, "highToLowTutors");
+            }
+            else if ($sortby == "low-to-high") {
+                return $this->dao->search($parameters, "lowToHighTutors");
+            }
+        }
+        else {
+            $parameters = [
+                ":major_id" => $major_id,
+                ":classcode" => $classcode,
+            ];
+            if ($sortby == "high-to-low") {
+                return $this->dao->search($parameters, "highToLowTutors");
+            }
+            else if ($sortby == "low-to-high") {
+                return $this->dao->search($parameters, "lowToHighTutors");
+            }
+        }
+        /*if ($filtertype == "both") {
             $parameters = [
                 ":filtertype" => $filtertype,
                 ":filterinput1" => $filterinput1,
@@ -286,7 +309,7 @@ class Model
             else if ($sorttype == "low-to-high") {
                 return $this->dao->search($parameters, "lowToHighTutors");
             }
-        }
+        }*/
 /*        if (($filterinput1 != "") && ($filterinput2 != "")) {
             $parameters = [
                 ":filtertype" => $filtertype,
@@ -310,9 +333,9 @@ class Model
             return $this->dao->search($parameters, "LowToHighTutors");*/
     }
     
-    public function getFilteredTutors($filtertype, $filterinput1, $filterinput2) 
+    public function getFilteredTutors($major_id, $classcode) 
     {
-        if ($filtertype == "both") {
+        /*if ($filtertype == "both") {
             $parameters = [
                 ":filtertype" => $filtertype,
                 ":filterinput1" => $filterinput1,
@@ -333,6 +356,26 @@ class Model
                 ":filterinput1" => $filterinput1,
             ];
             return $this->dao->search($parameters, "filterClassTutors");
+        }*/
+        
+        if ($major_id == "") {
+            $parameters = [
+                ":classcode" => $classcode,
+            ];
+            return $this->dao->get($parameters, "filterClassTutors");
+        } 
+        else if ($classcode == "") {
+            $parameters = [
+                ":major_id" => $major_id,
+            ];
+            return $this->dao->get($parameters, "filterMajorTutors");
+        }
+        else {
+            $parameters = [
+                ":classcode" => $classcode,
+                ":major_id" => $cmajor_id,
+            ];
+            return $this->dao->get($parameters, "filterBothTutors");
         }
     }
 }
