@@ -240,11 +240,13 @@
                                             </h3>
                                             <br>
 
+<!--
                                             <div class="tutor-rating" style="margin:0px;">
 
                                                 <label>★★★★★</label>
 
                                             </div>
+-->
 
                                             <div class="">
 

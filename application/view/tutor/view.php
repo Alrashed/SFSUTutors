@@ -53,11 +53,13 @@
 
                                 <br>
 
+<!--
                                 <div class="tutor-rating" style="margin:0px;">
 
                                     <label>★★★★★</label>
 
                                 </div>
+-->
 
                             </div>
 
@@ -91,6 +93,7 @@
 
                 </div>
 
+<!--
                 <div class="col-sm-12" style="border:5px solid #DEDEDE; margin-top: 15px; padding: 15px 10px; background-color:#f7f7f7;">
 
                     <div class="col-sm-12 reviews">
@@ -127,6 +130,7 @@
                     </div>
 
                 </div>
+-->
 
             </div>
 
@@ -175,9 +179,16 @@
 
                             <div class="col-sm-12">
 
-                                <textarea placeholder="Enter message..." style="width: 100%; border: 1px solid #d9d9d9; height: 150px; padding: 10px; margin-bottom: 10px; resize: none;"></textarea>
+                                <textarea placeholder="Enter message..." style="width: 100%; border: 1px solid #d9d9d9; height: 150px; padding: 10px; margin-bottom: 10px; resize: none;" id="fakeMsg"></textarea>
 
-                                <button class="view-tutor-button"><b>SEND MESSAGE</b></button>
+                                <button class="view-tutor-button" onClick="fakeSend();"><b>SEND MESSAGE</b></button>
+                                
+                                <script>
+                                    function fakeSend() {
+                                        document.getElementById('fakeMsg').value = "";
+                                        alert("Your message as been sent to the Tutor!");
+                                    }
+                                </script>
 
                             </div>
 
