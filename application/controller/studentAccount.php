@@ -19,11 +19,9 @@ class StudentAccount extends Controller
             require APP . 'view/_templates/footer.php';
     }
     
-    public function editStudent()
+    public function editStudent($student_id)
     {
-        $student_id =  $_SESSION['loggedInStudent_id'];
-
-        if (isset($_SESSION['loggedInStudent_id'])) {
+        if (isset($student_id)) {
 
             $student = $this->model->getStudentInfo($student_id);
             //$studentbookings = $this->model->getStudentBookings($student_id);
