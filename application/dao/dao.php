@@ -157,7 +157,7 @@ class Dao
 
         else if ($target == "studentInfo") {
             $student_id = $parameters[":student_id"];
-            $sql = "SELECT firstName, lastName, email, birthdate, phone FROM student WHERE student_id = '".$student_id."' ";
+            $sql = "SELECT student_id, firstName, lastName, email, birthdate, phone FROM student WHERE student_id = '".$student_id."' ";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
