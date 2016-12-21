@@ -34,6 +34,8 @@ if (!isset($_SESSION)) {
         .library {
             background:url('<?php echo URL . '/img/Library.jpg' ?>') no-repeat center bottom;
             background-size: cover;
+            background-color: rgba(0,0,0,.2);
+            background-blend-mode: multiply;
         }
     </style>
             
@@ -55,7 +57,7 @@ if (!isset($_SESSION)) {
 
                 <li><a href="<?php echo URL; ?>search/results">Find a Tutor</a></li>
 
-                <li><a href="<?php echo URL; ?>tutor/register">Become a Tutor</a></li>
+                <li><a href="">About</a></li>
 
             </ul>
           
@@ -82,9 +84,21 @@ if (!isset($_SESSION)) {
             <?php else : ?>
 
             <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                
+                    <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user"></span> Register<span class="caret "></span></a>
 
-                <li><a href="<?php echo URL; ?>student/register"><span class="glyphicon glyphicon-user"></span>Student Sign Up</a></li>
+                    <ul class="dropdown-menu">
 
+                        <li><a href="<?php echo URL; ?>student/register">As Student</a></li>
+
+                        <li><a href="<?php echo URL; ?>tutor/register">As Tutor</a></li>
+
+                    </ul>
+                
+                </li>
+                
                 <li><a href="<?php echo URL; ?>login/index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
             </ul>

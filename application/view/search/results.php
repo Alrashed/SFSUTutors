@@ -22,8 +22,6 @@
                             
                             <input type="hidden" name="classcode" value="<?php if(isset($_GET['classcode'])) echo htmlspecialchars($_GET['classcode']); ?>">
                             
-<!--                            <input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->
-                            
                             <div class="form-group float-left">
 
                                 <select name="major_id" id="major"  style="width: 200px !important; min-width: 200px; max-width: 200px; height: 35px;" onchange='this.form.submit()'>
@@ -41,12 +39,7 @@
                                 <noscript><input type="submit" name="submit_major_id" value="Submit" id="searchButton"></noscript>
                                 
                             </div>
-<!--
-                            <div class="form-group float-left">   
-                                <input type="submit" class="btn btn-info" name="submit_major_id" value="Submit">
 
-                            </div>
--->
                         </form>
 
                     </div>
@@ -60,8 +53,6 @@
                         <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
 
                             <input type="hidden" name="major_id" value="<?php if(isset($_GET['major_id'])) echo htmlspecialchars($_GET['major_id']); ?>">
-                            
-<!--                            <input type="hidden" name="sortby" value="<//?php if(isset($_GET['sortby'])) echo htmlspecialchars($_GET['sortby']); ?>">-->
                             
                             <div class="form-group float-left">
 
@@ -85,7 +76,7 @@
 
                         <h5 style="font-size:14px">Filter by Price Range:</h5>
 
-                        <form class="form-inline" action="<?php echo URL; ?>search/advanced" method="GET">
+                        <form class="form-inline" action="</?php echo URL; ?>search/advanced" method="GET">
 
                             <div class="form-group float-left">
 
