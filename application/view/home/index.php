@@ -56,19 +56,21 @@
 
         </div>
         <br>
-        <?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
+<!--
+        </?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
         
         <p style="text-align: center;">
             <a href="<?php echo URL; ?>studentAccount/account" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
         </p>
         
-        <?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
+        </?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
         
         <p style="text-align: center;">
             <a href="<?php echo URL; ?>tutorAccount/account" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
         </p>
         
-        <?php else : ?>
+        </?php else : ?>
+-->
         
         <p style="text-align: center;">
             <a href="<?php echo URL; ?>student/register" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
@@ -121,19 +123,21 @@
 
     </div>
     <br>
-    <?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
+<!--
+    </?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
         
     <p style="text-align: center;">
         <a href="<?php echo URL; ?>studentAccount/account" class="btn btn-primary btn-lg">Become a Tutor Now</a>
     </p>
 
-    <?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
+    </?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
 
     <p style="text-align: center;">
         <a href="<?php echo URL; ?>tutorAccount/account" class="btn btn-primary btn-lg">Become a Tutor Now</a>
     </p>
 
-    <?php else : ?>
+    </?php else : ?>
+-->
     
     <p style="text-align: center;">
         <a href="<?php echo URL; ?>tutor/register" class="btn btn-primary btn-lg">Become a Tutor Now</a>
