@@ -2,6 +2,12 @@
 <div id="homehead" class="home container-fluid static-page library">
     
     <h1>TUTORING SERVICES MADE SIMPLE FOR SFSU STUDENTS!</h1>
+    
+    <hr style="width: 75%;">
+                
+    <h3 style="color: #f0ffff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 10);">We Connect Students With Tutors</h3>
+                
+    <br><br>
 
     <p>
         <a href="<?php echo URL; ?>search/results" class="btn btn-primary btn-lg">Find a Tutor Now</a>
@@ -50,6 +56,20 @@
 
         </div>
         <br>
+        <?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
+        
+        <p style="text-align: center;">
+            <a href="<?php echo URL; ?>studentAccount/account" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
+        </p>
+        
+        <?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
+        
+        <p style="text-align: center;">
+            <a href="<?php echo URL; ?>tutorAccount/account" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
+        </p>
+        
+        <?php else : ?>
+        
         <p style="text-align: center;">
             <a href="<?php echo URL; ?>student/register" class="btn btn-primary btn-lg">Sign Up as Student Now</a>
         </p>
@@ -101,6 +121,20 @@
 
     </div>
     <br>
+    <?php if (isset($_SESSION['loggedInStudent_id'])) : ?>
+        
+    <p style="text-align: center;">
+        <a href="<?php echo URL; ?>studentAccount/account" class="btn btn-primary btn-lg">Become a Tutor Now</a>
+    </p>
+
+    <?php elseif (isset($_SESSION['loggedInTutor_id'])) : ?>
+
+    <p style="text-align: center;">
+        <a href="<?php echo URL; ?>tutorAccount/account" class="btn btn-primary btn-lg">Become a Tutor Now</a>
+    </p>
+
+    <?php else : ?>
+    
     <p style="text-align: center;">
         <a href="<?php echo URL; ?>tutor/register" class="btn btn-primary btn-lg">Become a Tutor Now</a>
     </p>
