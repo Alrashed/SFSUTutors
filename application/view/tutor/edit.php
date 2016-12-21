@@ -6,9 +6,9 @@
 
             <div class="panel panel-default well">
 
-                <div class="panel-heading" style="text-align:center; font-weight:800; font-size:20px">Tutor Registeration</div>
+                <div class="panel-heading" style="text-align:center; font-weight:800; font-size:20px">Edit Tutor Account</div>
 
-                <form class="panel-body form-horizontal" style="font-size: 16px;background-color: #87CEFA"  name="tutor" role="form" action="<?php echo URL; ?>tutor/registertutor" method="POST">
+                <form class="panel-body form-horizontal" style="font-size: 16px;background-color: #87CEFA"  name="tutor" role="form" action="<?php echo URL; ?>tutor/edittutor" method="POST">
 
                     <div class="form-group">
 
@@ -16,7 +16,7 @@
 
                         <div class="col-sm-3">
 
-                            <input type="text" class="form-control  placeholder" name="firstname" id="firstname" placeholder="Enter your first name" required>
+                            <input type="text" class="form-control  placeholder" name="firstname" id="firstname" value="<?php if (isset($tutor->firstName)) echo htmlspecialchars($tutor->firstName, ENT_QUOTES, 'UTF-8'); ?>" readonly>
 
                         </div>
 
@@ -24,7 +24,7 @@
 
                         <div class="col-sm-3">
 
-                            <input type="text" class="form-control placeholder" name="lastname" id="lastname" placeholder="Enter your last name" required>
+                            <input type="text" class="form-control placeholder" name="lastname" id="lastname" value="<?php if (isset($tutor->lastName)) echo htmlspecialchars($tutor->lastName, ENT_QUOTES, 'UTF-8'); ?>" readonly>
 
                         </div>
 
@@ -36,7 +36,7 @@
 
                         <div class="col-sm-6">
 
-                            <input type="email" class="form-control placeholder email_field" name="email" id="email" placeholder="Enter your SFSU email" required>
+                            <input type="email" class="form-control placeholder email_field" name="email" id="email" value="<?php if (isset($tutor->email)) echo htmlspecialchars($tutor->email, ENT_QUOTES, 'UTF-8'); ?>" readonly>
 
                         </div>
 
@@ -72,7 +72,7 @@
 
                         <div class="col-sm-4">
 
-                            <input type="text" class="form-control placeholder" name="birthdate" placeholder="mm/dd/yyyy" required>
+                            <input type="text" class="form-control placeholder" name="birthdate" value="<?php if (isset($tutor->birthdate)) echo htmlspecialchars($tutor->birthdate, ENT_QUOTES, 'UTF-8'); ?>" required>
 
                         </div>
 
@@ -84,7 +84,7 @@
 
                         <div class="col-sm-4">
 
-                            <input type="text" class="form-control placeholder" name= "phone" placeholder="10 digit phone No." maxlength="10" required>
+                            <input type="text" class="form-control placeholder" name= "phone" value="<?php if (isset($tutor->phone)) echo htmlspecialchars($tutor->phone, ENT_QUOTES, 'UTF-8'); ?>" maxlength="10" required>
 
                         </div>
 
@@ -96,26 +96,7 @@
 
                         <div class="col-sm-4">
 
-                            <input type="text" class="form-control placeholder" name= "major" placeholder="Enter your major" required>
-
-                        </div>
-                        
-                        <label class="control-label col-sm-2" for="major_id" style="margin-left: -5%;">Major ID:</label>
-
-                        <div class="col-sm-2">
-
-                            <select name="major_id" id="major_id" style="width: 140px !important; min-width: 100px; max-width: 140px; height: 34px;">
-                                
-                                <option value="">Select major ID</option>
-                                <?php
-                                    foreach ($majors as $major) {
-                                        if (isset($major->mName)) {
-                                            echo "<option value =" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($major->major_id, ENT_QUOTES, 'UTF-8') . "</option>";
-                                        }
-                                    }
-                                ?>
-                                
-                            </select>
+                            <input type="text" class="form-control placeholder" name= "major" value="<?php if (isset($tutor->major)) echo htmlspecialchars($tutor->major, ENT_QUOTES, 'UTF-8'); ?>" readonly>
 
                         </div>
 
@@ -127,7 +108,7 @@
 
                         <div class="col-sm-2">
 
-                            <input type="text" class="form-control placeholder" name= "gpa" placeholder="Your current GPA" required>
+                            <input type="text" class="form-control placeholder" name= "gpa" value="<?php if (isset($tutor->gpa)) echo htmlspecialchars($tutor->gpa, ENT_QUOTES, 'UTF-8'); ?>" required>
 
                         </div>
 
@@ -139,7 +120,7 @@
 
                         <div class="col-sm-8">
 
-                            <textarea rows="7" class="form-control input-lg placeholder" name= "about" maxlength="1000" placeholder="This what students will see on your profile..." required></textarea>
+                            <textarea rows="7" class="form-control input-lg placeholder" name= "about" maxlength="1000" value="<?php if (isset($tutor->about)) echo htmlspecialchars($tutor->about, ENT_QUOTES, 'UTF-8'); ?>" required></textarea>
 
                         </div>
 
@@ -151,7 +132,7 @@
 
                         <div class="col-sm-8">
 
-                            <input type="text" class="form-control placeholder" name= "available" placeholder="When you are available on weekly basis. Ex. MWF 4pm to 6pm, TTh 1pm to 2pm" required>
+                            <input type="text" class="form-control placeholder" name= "available" value="<?php if (isset($tutor->available)) echo htmlspecialchars($tutor->available, ENT_QUOTES, 'UTF-8'); ?>" required>
 
                         </div>
 
@@ -163,7 +144,7 @@
 
                         <div class="col-sm-8">
 
-                            <input type="text" class="form-control placeholder" name= "offering" placeholder="Enter the classes you'll be tutoring. Ex: CSC 340, CSC 413" required>
+                            <input type="text" class="form-control placeholder" name= "offering" value="<?php if (isset($tutor->offering)) echo htmlspecialchars($tutor->offering, ENT_QUOTES, 'UTF-8'); ?>" required>
 
                         </div>
 
@@ -175,7 +156,7 @@
 
                         <div class="col-sm-2">
 
-                            <input type="text" class="form-control placeholder" name= "price" placeholder="Ex: 20.00" required>
+                            <input type="text" class="form-control placeholder" name= "price" value="<?php if (isset($tutor->price)) echo htmlspecialchars($tutor->price, ENT_QUOTES, 'UTF-8'); ?>" required>
 
                         </div>
 
@@ -195,29 +176,9 @@
 
                     <div class="form-group">
 
-                        <div class="" style="text-align:center">
-
-                            <div class="checkbox">
-
-                                <label style="padding: 0px 50px 0px 50px;"><input type="checkbox" required> By Registering, you agree that you've read and accepted our  <a href="<?php echo URL . 'home/agreement' ?>">User Agreement</a>, you're at least 18 years old, and you consent to our <a href="<?php echo URL . 'home/privacy' ?>">Privacy Notice</a>.</label>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="" style="text-align:center">
-
-                        <a href="<?php echo URL; ?>login/index"><h4>Already registered? Click here to login.</h4></a>
-
-                    </div>
-
-                    <div class="form-group">
-
                         <div class="col-lg-4 col-lg-offset-5">
 
-                            <button type="submit" class="btn btn-success submit" style="margin-right:20%; margin-bottom:0%;" name= "submit" value="submit" onclick="validateEmail()">Sign Up</button>
+                            <button type="submit" class="btn btn-success submit" style="margin-right:20%; margin-bottom:0%;" name= "submit" value="submit">Edit Account</button>
 
                         </div>
 
@@ -246,16 +207,4 @@
     }
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
-
-    function validateEmail() {
-        var email = document.getElementById("email");
-        var domain1 = /^\w+([-+.]\w+)*@mail.sfsu.edu$/; // accepts common characters before @ symbol
-        var domain2 = /^\w+([-+.]\w+)*@sfsu.edu$/;
-        if (email.value.match(domain1) || email.value.match(domain2)) {
-            email.setCustomValidity('');
-        } else {
-            email.setCustomValidity("Email must be from SFSU!")
-        }
-        email.onchange = validateEmail;
-    }
 </script>

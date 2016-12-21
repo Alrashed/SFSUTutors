@@ -19,6 +19,15 @@ class Student extends Controller
         header('location: ' . URL . 'login/index');
     }
     
+    public function editStudent()
+    {
+        $this->model->editStudent($student_id, $_POST["password"], $_POST["birthdate"], $_POST["phone"]);
+
+        // where to go after user has been deleted
+         header('location: ' . URL . 'student/account');
+
+    }
+    
     public function deleteStudent($student_id)
     {
         if (isset($student_id)) {

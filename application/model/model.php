@@ -62,14 +62,15 @@ class Model
         return $this->dao->get($parameters, "studentBookings");
     }
     
-    public function editStudent($student_id, $password, $phone) 
+    public function editStudent($student_id, $password, $birthdate, $phone) 
     {
         $parameters = [
             ":student_id" => $student_id,
             ":password" => $password,
+            ":birthdate" => $birthdate,
             ":phone" => $phone,
         ];
-        $this->dao->update($parameters, "editStudent");
+        $this->dao->update($parameters, "student");
     }
     
     public function deleteStudent($student_id)
@@ -162,7 +163,7 @@ class Model
             ":photo" => $photo,
 //            ":transcript" => $transcript,
         ];
-        $this->dao->update($parameters, "editTutor");
+        $this->dao->update($parameters, "tutor");
     }
     
     public function deleteTutor($tutor_id)

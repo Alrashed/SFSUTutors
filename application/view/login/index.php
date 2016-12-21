@@ -137,7 +137,7 @@
     $(function () {
         $('#menu1 a').click(function (e) {
             e.preventDefault();
-            $('a[href="' + $(this).attr('href') + '"]').pill();
+            $('a[href="' + $(this).attr('href') + '"]').pill('');
         })
     });
     

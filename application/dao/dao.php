@@ -257,9 +257,10 @@ class Dao
         if ($target == "student") {
             $student_id = $parameters[":student_id"];
             $password = $parameters[":password"];
+            $birthdate = $parameters[":birthdate"];
             $phone = $parameters[":phone"];
 
-            $sql = "UPDATE student SET password = '".$password."', phone = '".$phone."' WHERE student_id = '".$student_id."'";
+            $sql = "UPDATE student SET password = '".$password."', birthdate = '".$birthdate."', phone = '".$phone."' WHERE student_id = '".$student_id."'";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
@@ -281,9 +282,8 @@ class Dao
             $offering = $parameters[":offering"];
             $price =  $parameters[":price"];
             $photo =  $parameters[":photo"];
-            $transcript =  $parameters[":transcript"];
 
-            $sql = "UPDATE tutor SET password = '".$password."', phone = '".$phone."' , about = '".$about."' , available = '".$available."' , offering = '".$offering."', $price = '".$price."' WHERE tutor_id = '".$tutor_id."'";
+            $sql = "UPDATE tutor SET password = '".$password."', phone = '".$phone."' , about = '".$about."' , available = '".$available."' , offering = '".$offering."', price = '".$price."' WHERE tutor_id = '".$tutor_id."'";
             $query = $this->db->prepare($sql);
             try {
                 if ($query->execute()) {
@@ -301,9 +301,9 @@ class Dao
             $result = $query->fetch();
             $uploadID = $result->upload_id;
 
-            $sql1 = "UPDATE upload SET photo = :photo, transcript = :transcript WHERE upload_id = '".$uploadID."'";
+            $sql1 = "UPDATE upload SET photo = :photo WHERE upload_id = '".$uploadID."'";
             $query1 = $this->db->prepare($sql1);
-            $parameters1 = array(':photo' => $photo, ':transcript' => $transcript);
+            $parameters1 = array(':photo' => $photo);
 
             try {
                 if ($query1->execute($parameters1)) {
