@@ -36,8 +36,7 @@
 
                             <h5 class="col-lg-3 col-lg-offset-1  float-left"><i>Phone No.     </i></h5><h5 class="float-left">: <?php if (isset($student[0]->phone)) echo htmlspecialchars($student[0]->phone, ENT_QUOTES, 'UTF-8'); ?></h5></br>
 
-                            <a href="<?php echo URL . 'studentaccount/editstudent/' . htmlspecialchars($student[0]->student_id, ENT_QUOTES, 'UTF-8'); ?>">EDIT</a>
-
+                            <a class="btn btn-success submit" href="<?php echo URL . 'studentaccount/editstudent/' . htmlspecialchars($student[0]->student_id, ENT_QUOTES, 'UTF-8'); ?>">EDIT</a>
                         </div>
 
                     </div>
