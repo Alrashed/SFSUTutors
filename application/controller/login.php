@@ -30,9 +30,9 @@ class Login extends Controller
                 $_SESSION['email'] = $student->email;
                 header('location: ' . URL . 'home');
             } 
-//            else {
-//                header('location: ' . URL . 'login?msg=failed');
-//            }
+            if (($_GET["email"]) != ($student->email)) {
+                header('location: ' . URL . 'login?msg=failed');
+            }
         }
     }
     
@@ -51,9 +51,9 @@ class Login extends Controller
                 $_SESSION['email'] = $tutor->email;
                 header('location: ' . URL . 'home');
             } 
-//            else {
-//                header('location: ' . URL . 'login?msg=failed');
-//            }
+            if (($_GET["email"]) != ($student->email)) {
+                header('location: ' . URL . 'login/show/#menu1?msg=failed');
+            }
         }
     }
 }

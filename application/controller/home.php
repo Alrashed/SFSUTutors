@@ -13,4 +13,16 @@ class Home extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+    public function privacy() {
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/privacy.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+    public function agreement() {
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/agreement.php';
+        require APP . 'view/_templates/footer.php';
+    }
 }

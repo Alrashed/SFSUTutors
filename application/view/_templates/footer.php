@@ -15,8 +15,8 @@
 
                 <div class="col-sm-3">
                     
-                    <div class="">About</div>
-                    <div class="">contact</div>
+                    <div class=""><a href="<?php echo URL; ?>home/privacy">Privacy Notice</a></div>
+                    <div class=""><a href="<?php echo URL; ?>home/agreement">User Agreement</a></div>
                     
                 </div>
 

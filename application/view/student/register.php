@@ -100,7 +100,7 @@
 
                             <div class="checkbox">
 
-                                <label><input type="checkbox" required> I agree with term and condition</label>
+                                <label><input type="checkbox" required> By Registering, you agree that you've read and accepted our  <a href="<?php echo URL . 'home/agreement' ?>">User Agreement</a>, you're at least 18 years old, and you consent to our <a href="<?php echo URL . 'home/privacy' ?>">Privacy Notice</a>.</label>
 
                             </div>
 
