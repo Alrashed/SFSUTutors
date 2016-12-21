@@ -55,14 +55,14 @@
                             </div>
 
                             <div class="form-group">
+                                
+                                <?php
+                                    if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
+                                        echo "<p><font color='red'>You entered an invalid SF State ID or Password.</font></p>";
+                                    }
+                                ?>
 
                                 <div class="col-lg-4 col-lg-offset-4">
-                                    
-                                    <?php
-                                        if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                                            echo "<p><font color='red'>You entered an invalid SF State ID or Password.</font></p>";
-                                        }
-                                    ?>
 
                                     <button type="submit" name="loginstudent" class="btn btn-success login" >Login</button>
 
@@ -103,14 +103,14 @@
                             </div>
 
                             <div class="form-group">
+                                
+                                <?php
+                                    if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
+                                        echo "<p><font color='red'>You entered an invalid SF State ID or Password.</font></p>";
+                                    }
+                                ?>
 
                                 <div class="col-lg-4 col-lg-offset-4">
-                                    
-                                    <?php
-                                        if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                                            echo "<p><font color='red'>You entered an invalid SF State ID or Password.</font></p>";
-                                        }
-                                    ?>
 
                                     <button type="submit" name="logintutor" class="btn btn-success login" >Login</button>
 
@@ -137,7 +137,7 @@
     $(function () {
         $('#menu1 a').click(function (e) {
             e.preventDefault();
-            $('a[href="' + $(this).attr('href') + '"]').pill('show');
+            $('a[href="' + $(this).attr('href') + '"]').pill();
         })
     });
     

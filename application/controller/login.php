@@ -52,7 +52,7 @@ class Login extends Controller
                 header('location: ' . URL . 'home');
             } 
             if (($_GET["email"]) != ($student->email)) {
-                header('location: ' . URL . 'login/show/#menu1?msg=failed');
+                header('location: ' . URL . 'login/#menu1?msg=failed');
             }
         }
     }
